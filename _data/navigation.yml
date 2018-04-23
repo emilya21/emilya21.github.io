@@ -2,9 +2,12 @@
 main:
   - title: "About Me"
     url: /About_Me/index.html
+  - title: "Research"
+    url: /Research/index.html
   - title: "Photography"
     url: /Photography/index.html
   - title: "R Stuff"
     url: /R_Stuff/index.html
   - title: "CV"
     url: /CV.md
+
