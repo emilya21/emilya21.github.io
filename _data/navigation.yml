@@ -5,7 +5,7 @@ main:
   - title: "About"
     url: https://mmistakes.github.io/minimal-mistakes/about/
   - title: "Photography"
-    url: /SJU_Photos/index.html
+    url: /Photography/index.html
   - title: "Sample Collections"
     url: /collection-archive/
   - title: "Sitemap"
