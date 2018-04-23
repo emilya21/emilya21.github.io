@@ -1,13 +1,13 @@
 # main links
 main:
   - title: "About Me"
-    url: /About_Me/index.html
+    url: /About_Me
   - title: "Research"
-    url: /Research/index.html
+    url: /Research
   - title: "Photography"
     url: /Photography
   - title: "R Stuff"
-    url: /R_Stuff/index.html
+    url: /R_Stuff
   - title: "CV"
     url: /CV.md
 
