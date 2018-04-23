@@ -6,3 +6,5 @@ main:
     url: /Photography/index.html
   - title: "R Stuff"
     url: /R_Stuff/index.html
+  - title: "CV"
+    url: /CV.md
