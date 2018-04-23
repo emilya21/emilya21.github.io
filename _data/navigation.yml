@@ -5,7 +5,7 @@ main:
   - title: "Research"
     url: /Research/index.html
   - title: "Photography"
-    url: /Photography/index.html
+    url: /Photography
   - title: "R Stuff"
     url: /R_Stuff/index.html
   - title: "CV"
