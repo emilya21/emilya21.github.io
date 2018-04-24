@@ -1,6 +1,6 @@
 ---
 title: Research
-permalink: /Research
+permalink: /Research/
 layout: splash
 author_profile: true
 header:
