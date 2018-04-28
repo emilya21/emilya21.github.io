@@ -1,6 +1,6 @@
 ---
 title: "First R Post"
-layout: wide
+layout: single
 author_profile: false
 ---
 
