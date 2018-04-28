@@ -1,8 +1,7 @@
 ---
 title: "First R Post"
-author: "Michael Culshaw-Maurer"
-date: "4/27/2018"
-output: html_document
+layout: single
+author_profile: true
 ---
 
 # Let's figure this out
