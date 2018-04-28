@@ -1,7 +1,8 @@
 ---
 title: "First R Post"
-layout: single
-author_profile: true
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 # Let's figure this out
