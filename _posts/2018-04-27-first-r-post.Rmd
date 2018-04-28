@@ -2,7 +2,7 @@
 title: "First R Post"
 output:
   md_document:
-    variant: markdown_github
+    variant: gfm
 ---
 
 # Let's figure this out
@@ -12,8 +12,9 @@ output:
 Let's try a plot
 
 ```{r opts, echo = FALSE}
+title <- "first-r-post"
 knitr::opts_knit$set(base.dir = "/Users/MJ/Github/mcmaurer.github.io/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "assets/images/")
+knitr::opts_chunk$set(fig.path = paste0("assets/rmd-images/", title, "/"))
 ```
 
 ```{r}

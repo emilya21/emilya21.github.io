@@ -1,8 +1,6 @@
-Let’s figure this out
-=====================
+# Let’s figure this out
 
-well this is neat
------------------
+## well this is neat
 
 Let’s try a plot
 
@@ -12,4 +10,4 @@ ggplot(mtcars, aes(x=wt, y=mpg))+
   geom_point()
 ```
 
-![](/assets/images/unnamed-chunk-1-1.png)
+![](/assets/rmd-images/first-r-post/unnamed-chunk-1-1.png)<!-- -->
