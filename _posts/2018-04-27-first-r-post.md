@@ -19,3 +19,4 @@ ggplot(mtcars, aes(x=wt, y=mpg))+
 ```
 
 ![](/_posts/2018-04-27-first-r-post_files/figure-markdown_github/unnamed-chunk-1-1.png)
+{% raw %}![alt]({{ site.url }}{{ site.baseurl }}/_posts/2018-04-27-first-r-post_files/figure-markdown_github/unnamed-chunk-1-1.png){% endraw %}
