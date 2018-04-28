@@ -10,6 +10,12 @@ output:
 ## well this is neat
 
 Let's try a plot
+
+```{r opts, echo = FALSE}
+knitr::opts_knit$set(base.dir = "/Users/MJ/Github/mcmaurer.github.io/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "assets/images/")
+```
+
 ```{r}
 library(ggplot2)
 ggplot(mtcars, aes(x=wt, y=mpg))+
