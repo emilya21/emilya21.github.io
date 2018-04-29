@@ -6,8 +6,8 @@ main:
     url: /Research
   - title: "Photography"
     url: /Photography
-  - title: "Posts"
-    url: /Posts
+  - title: "Blog"
+    url: /Blog
   - title: "CV"
     url: /CV.pdf
 
