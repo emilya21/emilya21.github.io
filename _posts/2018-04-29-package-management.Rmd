@@ -8,6 +8,11 @@ preserve_yaml: true
 toc: true
 ---
 
+(delete this)`---
+toc: true
+excerpt: "A little guide to managing your packages between versions of R."
+---`(delete this)
+
 ```{r opts, echo = FALSE}
 title <- "first-r-post"
 knitr::opts_knit$set(base.dir = "/Users/MJ/Github/mcmaurer.github.io/", base.url = "/")
@@ -18,7 +23,7 @@ Do you want to make it easier to deal with packages in R? Have you ever upgraded
 
 Well, **there is!** You can just put your packages in a specific place and use some simple commands to re-install packages when you upgrade R. You can even keep separate folders for separate
 
-### Track Your Packages
+## Track Your Packages
 If you want to change where your packages are stored, you should probably start by figuring out where they are right now. You can use the `.libPaths()` function to find out where R is set to look for packages.
 
 ```{r}
@@ -27,7 +32,7 @@ If you want to change where your packages are stored, you should probably start 
 
 As you can see, I've got two paths listed here. The first one is my personally managed set of packages, which is what I hope to get you by the end of this post! The second one is R's default package location, which is probably where your packages currently live.
 
-### Find a New Home
+## Find a New Home
 
 To change where your packages get stored, you have to modify your `.Renviron` file, which is a file R uses to find environmental variables when it starts up. You can have project-specific `.Renviron` files, as well as versions in your `HOME` and `R_HOME` directories. R will only use one when it starts up, and it'll choose the most specific one. The file in your project directory will override the one in your `HOME` directory, and so on. For package management on my personal computer, where I am the only user, I use a `.Renviron` file in my `HOME` directory.
 
@@ -41,7 +46,7 @@ If it does, you're in great shape. If not, just create an empty file in your `HO
 
 Now we'll return to the `.Renviron` file and add the following line: `R_LIBS_SITE=~/R_Packages_3.5`. Now, when R starts up, it'll read your `.Renviron` file and set the environmental variable `R_LIBS_SITE`. Once this is all done, you can restart your R session and run `Sys.getenv("R_LIBS_SITE")` to verify. While you're at it, you can run `.libPaths()` again. You should now see two paths: your newly created folder, followed by R's default location. The order here matters, as R will look for packages in each of them sequentially. Packages will also install to the first location listed.
 
-### Time for the Move
+## Time for the Move
 
 Now that you've got an empty folder where R is ready to install and look for packages, it's time to install all of your packages here. **Do not** try to manually move files from one folder to another. Instead, you'll just get the names of all the packages you have installed in the default location and install them in the new one.
 
@@ -91,7 +96,7 @@ githubinstall(still_need)
 
 If there are multiple packages on Github that go by that name, it'll give you options of whose you want to install. This might jog your memory, but if you still can't remember, you can just go google it.
 
-### What To Do When You Upgrade R Again
+## What To Do When You Upgrade R Again
 
 Now that you've got all your folders in a custom location, re-installing packages when you've updated R should be really easy. You'll follow the same basic protocol described above: create a new folder to store packages for the new R version, change `R_LIBS_SITE` in your `.Renviron` file to match this new folder, and instead of the following code...
 
@@ -106,6 +111,50 @@ packages <- list.files("/Users/MJ/R_Packages_3.4")
 
 Now you'll be grabbing names of packages from your custom location for the previous R version. Follow the rest of the directions above to install your packages in your new R version package folder. As a bonus, you'll also have all your old packages in a nice neat location in case you want to run that old version of R at some point. Speaking of that...
 
-### Using Multiple R Versions
+## Using Multiple R Versions
 
 Sometimes you find a package that only works with an old version of R, and you need to run that old version. It can be helpful to then keep corresponding versions of packages in a specific folder, like `R_Packages_R_3.1` or something like that. You can pair these specific folders with [RSwitch](http://r.research.att.com/), an application from the R folks that lets you easily and immediately switch between R versions. One click in RSwitch, changing one name in your `.Renviron`, and bam, you've got a quick and easy pairing of R and appropriate packages. You could even establish separate project `.Renviron` folders with the appropriate packages built under the correct R version.
+
+## My Script For Moving Packages
+
+```{r, eval=F}
+# update R_LIBS_SITE with new folder 
+user_renviron = path.expand(file.path("~", ".Renviron"))
+file.edit(user_renviron)
+
+# Restart R and then use libPaths to check new path
+.libPaths()
+
+# now, get the names of all the packages from the OLD folder
+packages <- list.files("/Users/MJ/R_Packages_3.4")
+
+# reinstall all those packages in your new location (this will take a while)
+install.packages(packages, .libPaths()[1])
+
+# check any packages that you don't have now, such as packages that you got from Github
+
+packages_compare <- function(old_path, new_path){
+  old_packages <- list.files(old_path)
+  new_packages <- list.files(new_path)
+  
+  in_both <- old_packages %in% new_packages
+  not_installed_now <- old_packages[!in_both]
+  return(not_installed_now)
+}
+
+still_need <- packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
+still_need
+
+# the package githubinstall will find packages in github without the username and ask you if they're right, then install them
+library(githubinstall)
+
+githubinstall(still_need)
+
+# one last check to see if there are any you didn't get
+packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
+
+
+
+
+```
+

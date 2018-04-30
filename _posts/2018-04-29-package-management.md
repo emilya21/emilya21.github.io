@@ -1,6 +1,6 @@
----
-toc: true
-excerpt: "A little guide to managing your packages between versions of R."
+--- 
+toc: true 
+excerpt: "A little guide to managing your packages between versions of R." 
 ---
 
 Do you want to make it easier to deal with packages in R? Have you ever
@@ -13,7 +13,7 @@ Well, **there is\!** You can just put your packages in a specific place
 and use some simple commands to re-install packages when you upgrade R.
 You can even keep separate folders for separate
 
-### Track Your Packages
+## Track Your Packages
 
 If you want to change where your packages are stored, you should
 probably start by figuring out where they are right now. You can use the
@@ -32,7 +32,7 @@ personally managed set of packages, which is what I hope to get you by
 the end of this post\! The second one is R’s default package location,
 which is probably where your packages currently live.
 
-### Find a New Home
+## Find a New Home
 
 To change where your packages get stored, you have to modify your
 `.Renviron` file, which is a file R uses to find environmental variables
@@ -69,7 +69,7 @@ folder, followed by R’s default location. The order here matters, as R
 will look for packages in each of them sequentially. Packages will also
 install to the first location listed.
 
-### Time for the Move
+## Time for the Move
 
 Now that you’ve got an empty folder where R is ready to install and look
 for packages, it’s time to install all of your packages here. **Do not**
@@ -139,7 +139,7 @@ If there are multiple packages on Github that go by that name, it’ll
 give you options of whose you want to install. This might jog your
 memory, but if you still can’t remember, you can just go google it.
 
-### What To Do When You Upgrade R Again
+## What To Do When You Upgrade R Again
 
 Now that you’ve got all your folders in a custom location, re-installing
 packages when you’ve updated R should be really easy. You’ll follow the
@@ -163,7 +163,7 @@ install your packages in your new R version package folder. As a bonus,
 you’ll also have all your old packages in a nice neat location in case
 you want to run that old version of R at some point. Speaking of that…
 
-### Using Multiple R Versions
+## Using Multiple R Versions
 
 Sometimes you find a package that only works with an old version of R,
 and you need to run that old version. It can be helpful to then keep
@@ -175,3 +175,42 @@ versions. One click in RSwitch, changing one name in your `.Renviron`,
 and bam, you’ve got a quick and easy pairing of R and appropriate
 packages. You could even establish separate project `.Renviron` folders
 with the appropriate packages built under the correct R version.
+
+## My Script For Moving Packages
+
+``` r
+# update R_LIBS_SITE with new folder 
+user_renviron = path.expand(file.path("~", ".Renviron"))
+file.edit(user_renviron)
+
+# Restart R and then use libPaths to check new path
+.libPaths()
+
+# now, get the names of all the packages from the OLD folder
+packages <- list.files("/Users/MJ/R_Packages_3.4")
+
+# reinstall all those packages in your new location (this will take a while)
+install.packages(packages, .libPaths()[1])
+
+# check any packages that you don't have now, such as packages that you got from Github
+
+packages_compare <- function(old_path, new_path){
+  old_packages <- list.files(old_path)
+  new_packages <- list.files(new_path)
+  
+  in_both <- old_packages %in% new_packages
+  not_installed_now <- old_packages[!in_both]
+  return(not_installed_now)
+}
+
+still_need <- packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
+still_need
+
+# the package githubinstall will find packages in github without the username and ask you if they're right, then install them
+library(githubinstall)
+
+githubinstall(still_need)
+
+# one last check to see if there are any you didn't get
+packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
+```
