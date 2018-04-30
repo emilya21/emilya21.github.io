@@ -1,3 +1,5 @@
+
+
 --- 
 toc: true 
 excerpt: "A little guide to managing your packages between versions of R." 
@@ -206,10 +208,8 @@ packages_compare <- function(old_path, new_path){
 still_need <- packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
 still_need
 
-# the package githubinstall will find packages in github without the username and ask you if they're right, then install them
-library(githubinstall)
-
-githubinstall(still_need)
+# find packages from Github and install them
+githubinstall::githubinstall(still_need)
 
 # one last check to see if there are any you didn't get
 packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
