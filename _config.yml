@@ -234,6 +234,8 @@ tag_archive:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 
+paginate: 5 # amount of posts to show
+paginate_path: /Blog/page:num/
 
 # HTML Compression
 # - http://jch.penibelst.de/
