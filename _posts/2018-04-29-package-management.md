@@ -1,3 +1,7 @@
+---
+toc: true
+---
+
 Do you want to make it easier to deal with packages in R? Have you ever
 upgraded R only to find all your packages have gone missing? Have you
 ever needed to use an old version of R to run a specific package, only

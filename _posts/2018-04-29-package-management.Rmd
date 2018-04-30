@@ -4,6 +4,8 @@ subtitle: "Not Like UPS, Like R Packages"
 output:
   md_document:
     variant: gfm
+preserve_yaml: true
+toc: true
 ---
 
 ```{r opts, echo = FALSE}
