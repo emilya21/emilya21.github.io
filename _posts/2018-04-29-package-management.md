@@ -1,18 +1,14 @@
----
-classes: wide
----
-
 Do you want to make it easier to deal with packages in R? Have you ever
 upgraded R only to find all your packages have gone missing? Have you
 ever needed to use an old version of R to run a specific package, only
 to find that it’s a gigantic pain to deal with package versions? **There
 has to be a better way\!**
 
-Well, **there is\!** You can just put your packages in specific place
+Well, **there is\!** You can just put your packages in a specific place
 and use some simple commands to re-install packages when you upgrade R.
 You can even keep separate folders for separate
 
-## Track Your Packages
+### Track Your Packages
 
 If you want to change where your packages are stored, you should
 probably start by figuring out where they are right now. You can use the
@@ -31,7 +27,7 @@ personally managed set of packages, which is what I hope to get you by
 the end of this post\! The second one is R’s default package location,
 which is probably where your packages currently live.
 
-## Find a New Home
+### Find a New Home
 
 To change where your packages get stored, you have to modify your
 `.Renviron` file, which is a file R uses to find environmental variables
@@ -68,7 +64,7 @@ folder, followed by R’s default location. The order here matters, as R
 will look for packages in each of them sequentially. Packages will also
 install to the first location listed.
 
-## Time for the Move
+### Time for the Move
 
 Now that you’ve got an empty folder where R is ready to install and look
 for packages, it’s time to install all of your packages here. **Do not**
@@ -138,7 +134,7 @@ If there are multiple packages on Github that go by that name, it’ll
 give you options of whose you want to install. This might jog your
 memory, but if you still can’t remember, you can just go google it.
 
-## What To Do When You Upgrade R Again
+### What To Do When You Upgrade R Again
 
 Now that you’ve got all your folders in a custom location, re-installing
 packages when you’ve updated R should be really easy. You’ll follow the
@@ -162,7 +158,7 @@ install your packages in your new R version package folder. As a bonus,
 you’ll also have all your old packages in a nice neat location in case
 you want to run that old version of R at some point. Speaking of that…
 
-## Using Multiple R Versions
+### Using Multiple R Versions
 
 Sometimes you find a package that only works with an old version of R,
 and you need to run that old version. It can be helpful to then keep

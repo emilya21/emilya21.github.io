@@ -14,7 +14,7 @@ knitr::opts_chunk$set(fig.path = paste0("assets/rmd-images/", title, "/"))
 
 Do you want to make it easier to deal with packages in R? Have you ever upgraded R only to find all your packages have gone missing? Have you ever needed to use an old version of R to run a specific package, only to find that it's a gigantic pain to deal with package versions? **There has to be a better way!**
 
-Well, **there is!** You can just put your packages in specific place and use some simple commands to re-install packages when you upgrade R. You can even keep separate folders for separate
+Well, **there is!** You can just put your packages in a specific place and use some simple commands to re-install packages when you upgrade R. You can even keep separate folders for separate
 
 ### Track Your Packages
 If you want to change where your packages are stored, you should probably start by figuring out where they are right now. You can use the `.libPaths()` function to find out where R is set to look for packages.
