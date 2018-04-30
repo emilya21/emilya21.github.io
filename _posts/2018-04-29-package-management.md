@@ -1,5 +1,6 @@
 ---
 toc: true
+excerpt: "A little guide to managing your packages between versions of R."
 ---
 
 Do you want to make it easier to deal with packages in R? Have you ever
