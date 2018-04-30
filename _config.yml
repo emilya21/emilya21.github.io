@@ -242,6 +242,9 @@ compress_html:
   ignore:
     envs: development
 
+# collections (added by mcm)
+collections:
+- posts
 
 # Defaults
 defaults:
