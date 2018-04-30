@@ -1,7 +1,6 @@
 ---
-title: "Posts by Year"
+title: "Blog Posts"
 layout: posts
+permalink: /Blog/
 author_profile: false
 ---
-
-{% for post in site.pages %}
