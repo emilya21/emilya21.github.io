@@ -1,10 +1,6 @@
 ---
 title: "Blog Posts"
 permalink: /Blog/
-layout: archive
+layout: home
 author_profile: false
 ---
-
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
