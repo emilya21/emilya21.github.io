@@ -192,7 +192,7 @@ packages <- list.files("/Users/MJ/R_Packages_3.4")
 # reinstall all those packages in your new location (this will take a while)
 install.packages(packages, .libPaths()[1])
 
-# check for packages you don't have now, probably those from Github
+# check for packages you don't have now, probably those installed from Github
 
 packages_compare <- function(old_path, new_path){
   old_packages <- list.files(old_path)
