@@ -11,7 +11,9 @@ has to be a better way\!**
 
 Well, **there is\!** You can just put your packages in a specific place
 and use some simple commands to re-install packages when you upgrade R.
-You can even keep separate folders for separate
+You can even keep separate folders for different versions of R, in case
+you need to use a package that doesn’t work with the most current
+version.
 
 ## Track Your Packages
 
@@ -192,7 +194,7 @@ packages <- list.files("/Users/MJ/R_Packages_3.4")
 # reinstall all those packages in your new location (this will take a while)
 install.packages(packages, .libPaths()[1])
 
-# check for packages you don't have now, probably those installed from Github
+# check for packages you don't have now, probably those from Github
 
 packages_compare <- function(old_path, new_path){
   old_packages <- list.files(old_path)
