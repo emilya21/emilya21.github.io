@@ -181,6 +181,9 @@ with the appropriate packages built under the correct R version.
 ## My Script For Moving Packages
 
 ``` r
+# first, save current library path
+old_folder <- .libPaths()[1]
+
 # update R_LIBS_SITE with new folder 
 user_renviron = path.expand(file.path("~", ".Renviron"))
 file.edit(user_renviron)
@@ -189,7 +192,7 @@ file.edit(user_renviron)
 .libPaths()
 
 # now, get the names of all the packages from the OLD folder
-packages <- list.files("/Users/MJ/R_Packages_3.4")
+packages <- list.files(old_folder)
 
 # reinstall all those packages in your new location (this will take a while)
 install.packages(packages, .libPaths()[1])
@@ -205,12 +208,12 @@ packages_compare <- function(old_path, new_path){
   return(not_installed_now)
 }
 
-still_need <- packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
+still_need <- packages_compare(old_folder, .libPaths()[1])
 still_need
 
 # find packages from Github and install them
 githubinstall::githubinstall(still_need)
 
 # one last check to see if there are any you didn't get
-packages_compare("/Users/MJ/R_Packages_3.4", "/Users/MJ/R_Packages_3.5")
+packages_compare(old_folder, .libPaths()[1])
 ```
