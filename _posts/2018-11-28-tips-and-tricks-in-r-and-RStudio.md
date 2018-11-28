@@ -1,5 +1,4 @@
 --- 
-toc: true 
 excerpt: "A handful of useful things I've
 picked up along the way." 
 ---
