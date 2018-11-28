@@ -1,7 +1,7 @@
 
 
---- toc: true excerpt: "A handful of useful things I've
-picked up along the way." ---
+`--- toc: true excerpt: "A handful of useful things I've
+picked up along the way." ---`
 
 I gave a (very informal) talk today for the [Davis R User’s
 Group](https://d-rug.github.io/) where I shared some of my favorite
