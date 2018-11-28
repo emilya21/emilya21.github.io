@@ -43,7 +43,7 @@ x <- mtcars %>% ggplot()
 
 # moving tabs + console/source --------------------------------------------
 
-# names of these shortcuts are: 
+# names of these shortcuts are: "Open Previous Tab", "Open Next Tab", and "Switch Focus between Source/Console"
 # CMD+1 for moving to the left tab
 # CMD+3 for moving to the right tab
 # CMD+2 for back and forth between source and console
