@@ -1,7 +1,7 @@
-
-
-(delete this)`--- toc: true excerpt: "A handful of useful things I've
-picked up along the way." ---`(delete this)
+--- 
+toc: true excerpt: "A handful of useful things I've
+picked up along the way." 
+---
 
 ``` r
 plot(mtcars$mpg, mtcars$cyl)
