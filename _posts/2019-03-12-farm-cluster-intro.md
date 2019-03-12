@@ -1,13 +1,13 @@
 --- 
 toc: true excerpt: "A handful of useful things I've
-picked up along the way." 
+picked up along the way."
 ---
 
 ``` r
 plot(mtcars$mpg, mtcars$cyl)
 ```
 
-![](/assets/rmd-images/first-r-post/unnamed-chunk-1-1.png)<!-- -->
+![](/assets/rmd-images/farm-cluster-intro/unnamed-chunk-1-1.png)<!-- -->
 
 # Intro
 

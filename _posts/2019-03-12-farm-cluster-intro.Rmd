@@ -1,5 +1,5 @@
 ---
-title: "Sustainable FARMing"
+title: "FARM Cluster Intro"
 subtitle: "A Primer on the UCD CAES Computing Cluster"
 output:
   md_document:
@@ -14,7 +14,7 @@ excerpt: "A handful of useful things I've picked up along the way."
 ---`(delete this)
 
 ```{r opts, echo = FALSE}
-title <- "first-r-post"
+title <- "farm-cluster-intro"
 knitr::opts_knit$set(base.dir = "/Users/MJ/Github/mcmaurer.github.io/", base.url = "/")
 knitr::opts_chunk$set(fig.path = paste0("assets/rmd-images/", title, "/"))
 ```
