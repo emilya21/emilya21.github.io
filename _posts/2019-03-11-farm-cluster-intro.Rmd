@@ -10,7 +10,7 @@ toc: true
 
 (delete this)`---
 toc: true
-excerpt: "A handful of useful things I've picked up along the way."
+excerpt: "Getting you up and running R on the UC Davis FARM computing cluster."
 ---`(delete this)
 
 ```{r opts, echo = FALSE}
@@ -18,11 +18,6 @@ title <- "farm-cluster-intro"
 knitr::opts_knit$set(base.dir = "/Users/MJ/Github/mcmaurer.github.io/", base.url = "/")
 knitr::opts_chunk$set(fig.path = paste0("assets/rmd-images/", title, "/"))
 ```
-
-```{r}
-plot(mtcars$mpg, mtcars$cyl)
-```
-
 
 # Intro
 
@@ -53,6 +48,8 @@ This is by no means a comprehensive lesson on high performance computing, nor is
     - while some of this may be generalized to other computing clusters, be careful
 
 # Unix Shell Basics
+
+![](/assets/rmd-images/farm-cluster-intro/ls_1.gif)
 
 # Generating an SSH Key
 

@@ -1,13 +1,7 @@
----
-toc: true 
-excerpt: "Getting you up and running R on the FARM." 
----
 
-``` r
-plot(mtcars$mpg, mtcars$cyl)
-```
 
-![](/assets/rmd-images/farm-cluster-intro/unnamed-chunk-1-1.png)<!-- -->
+(delete this)`--- toc: true excerpt: "Getting you up and running R on
+the UC Davis FARM computing cluster." ---`(delete this)
 
 # Intro
 
@@ -57,6 +51,8 @@ figured out to get **my** R scripts running on the FARM.
         clusters, be careful
 
 # Unix Shell Basics
+
+![](/assets/rmd-images/farm-cluster-intro/ls_1.gif)
 
 # Generating an SSH Key
 
