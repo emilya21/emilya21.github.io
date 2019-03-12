@@ -1,4 +1,4 @@
---- 
+---
 toc: true excerpt: "Getting you up and running R on
 the UC Davis FARM computing cluster."
 ---
@@ -52,11 +52,127 @@ figured out to get **my** R scripts running on the FARM.
 
 # Unix Shell Basics
 
+Terminal, command line, and shell, oh my\! I’m going to do a quick
+rundown of these terms, to start. A Terminal is a program that lets you
+type text in, and get text back as a response. The command line is just
+the line where you type in those text commands. Finally, a shell is an
+application that interprets those text commands, it’s almost like a
+translator between you and the computer, taking the text you type and
+translating it for the computer, then translating what the computer
+gives as its response. The default shell for Macs and many Linux
+distributions is `bash`, which we’ll be using today.
+
+Go ahead and open up the Terminal application on your computer. You
+should be greeted by some type of **prompt**, which will probably
+involve something with your username, and it’ll end with the dollar sign
+$. Once you’re here, type `ls` and hit `Enter`. Congratulations, you’ve
+just run your first shell command\! `ls` will list all the files in your
+current directory, which should be your user by default. Now try typing
+`pwd` and hitting enter, which will *print working directory*, or where
+your shell is currently working. On my computer, it is `MJ`, my
+username. You can also use `~` as a shortcut for your Home directory.
+
+![](/assets/rmd-images/farm-cluster-intro/ls_pwd.gif)
+
+You can add *options* to a command like `ls`, like `ls -a` to list
+**all** the files in your directory.
+
 ![](/assets/rmd-images/farm-cluster-intro/ls_1.gif)
+
+You can check the *manual* page for any function by using the command
+`man`. For example, `man ls` will bring up the manual page for the `ls`
+function, which includes all of the possible options you can use. You
+can scroll up and down the manual page and press `q` to exit the manual
+page.
+
+Another key function we’ll use is `cd`, which we use to change the
+current working directory. For example, if I’m in my Home directory (my
+username, MJ), which contains a Documents folder, I can use the command
+`cd Documents/` to change my working directory to `MJ/Documents`. You
+can type `pwd` to verify where you’ve moved to, and `ls` to list all the
+files in your new working directory. To go up one level from your
+current working directory, like moving from `MJ/Documents` up to `MJ`,
+you type `cd ..`. `..` just means “up one level”.
+
+We will be using `cd` and `ls` a ton, and we’ll introduce other commands
+as we need them.
+
+# Showing Hidden Files
+
+If you’re very observant, you may have noticed some strange files when I
+ran `ls -a` on my computer, a whole bunch of files that all begin with
+`.`. These are called “hidden files”, and by default, Finder on a Mac
+will not show them. They typically deal with “under the hood” stuff on
+your computer, and we’re about to get a little bit “under the hood”.
+
+If you can see all the hidden files in Finder under your user, then you
+can skip the next section. If you **don’t** see them in Finder, we’ll
+need to change that. If you’re on Windows, Google around a little bit to
+see if this is even a problem for you, I honestly have no idea. Linux
+should show them by default.
+
+We’re going to set up your Mac to permanently show hidden files any time
+you’re looking around in Finder, as this is going to be important in the
+future. Copy-paste the following code into your Terminal: `defaults
+write com.apple.finder AppleShowAllFiles YES`. Now hit Enter.
+
+Now go up to the apple icon in your menu bar, select Force Quit, select
+Finder, and click the Relaunch button. Now all your hidden files should
+show up in your Finder. We’ll be looking at some of these files later
+on.
+
+# Making a FARM Account
+
+If you go to [the FARM official
+website](https://wiki.cse.ucdavis.edu/support/systems/farm) and scroll
+down to the Access Policy section, where you’ll find a link to the
+[Account Request Form](http://wiki.cse.ucdavis.edu/cgi-bin/index2.pl)
+and instructions on making an account. Please follow these instructions.
+When you log in to the Account Request Form, it will ask you to upload
+an *SSH public key*. We’ll go through this process next.
 
 # Generating an SSH Key
 
-# Getting Your Account
+SSH is a widely-used protocol for securely logging into a computer from
+another computer. Since the FARM is basically another gigantic computer,
+this is what we’ve gotta do.
+
+The way SSH works is that you generate a **key pair**. You can think of
+this as a pair of extremely weird and long passwords that recognize each
+other. One is your **public** key and the other is the **private** key.
+As the names suggest, your public key will get shared with the other
+computer you want to log into, and the private key stays on your
+computer and **should never ever ever be shared**. I don’t know enough
+to say “well actually it’s ok in this circumstance”, and if you’re
+reading this, neither do you, so just never ever share it, ok?
+
+To generate a key pair, we’ll use the command `ssh-keygen` with some
+options. Type out `ssh-keygen -b 4096 -t rsa` to create the type of key
+recommended by the FARM documentation (I won’t get into too much detail
+here). Hit Enter. You will then be prompted to `Enter file in which to
+save the key (your_home_directory/.ssh/id_rsa):`. **Just hit enter** to
+put the keys in the default location. Next, you’ll be prompted to enter
+a passphrase. Choose a hard password, but remember it. This isn’t Gmail,
+if you forget this password, there’s no way to get it back. **As you
+type, nothing will show up**, and this is ok. Just type out your
+passphrase and hit Enter when you’re done. You’ll have to retype it
+again, and then press Enter again. You should now get a confirmation
+that the key pair was created.
+
+These keys now live in your `.ssh` folder, which resides in your Home
+directory. You should check to make sure you can get to this location in
+your Finder. Go look in your Home directory in Finder, and look for the
+`.ssh` folder. Go into this folder, and you shoud see your private
+`id_rsa` and public `id_rsa.pub` files.
+
+Now, on the [Account Request
+Form](http://wiki.cse.ucdavis.edu/cgi-bin/index2.pl), where it says to
+upload your public `id_rsa.pub` key, you should be able to click the
+button and navigate to this file and upload it. **Make sure it is the
+public key you are uploading**. Then finish off the instructions on
+making your FARM account. You should get an email when your account is
+set up and you’re able to access the FARM. Be sure to write down your
+username and any other info you’re given.
 
 # Set Up Known Host
 
