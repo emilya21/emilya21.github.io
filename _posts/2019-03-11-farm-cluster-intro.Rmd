@@ -93,6 +93,8 @@ Now, on the [Account Request Form](http://wiki.cse.ucdavis.edu/cgi-bin/index2.pl
 
 # Set Up Known Host
 
+Once you've been notified that your FARM account has been created
+
 # Logging On and Looking Around
 
 # `rsync` Basics
