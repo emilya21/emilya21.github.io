@@ -95,6 +95,8 @@ files in your new working directory. To go up one level from your
 current working directory, like moving from `MJ/Documents` up to `MJ`,
 you type `cd ..`. `..` just means “up one level”.
 
+![](/assets/rmd-images/farm-cluster-intro/cd_1.gif)
+
 We will be using `cd` and `ls` a ton, and we’ll introduce other commands
 as we need them.
 
@@ -210,6 +212,8 @@ it’s pretty simple. Type out the text below:
        HostName agri.cse.ucdavis.edu
        User your-user-name
 
+![](/assets/rmd-images/farm-cluster-intro/nano_config.gif)
+
 We’re telling our `ssh` protocol that there’s a host “farm” that you can
 access with a certain location and username. Now, press `CTRL-X` to exit
 `nano`. You’ll be prompted to write the file before quitting, then asked
@@ -233,6 +237,8 @@ In your FARM Terminal window, go ahead and run `pwd` to see where you
 are. This directory should be your username, and we’ll refer to this as
 your FARM home directory. Use `ls` to see what’s here.
 
+![](/assets/rmd-images/farm-cluster-intro/log_on.gif)
+
 ## Making Directories and Files
 
 You shouldn’t have any folders yet, so let’s make a folder called
@@ -247,12 +253,16 @@ overdo it, and it can be annoying to dig 10 levels down to find your
 files, but I think the worst thing you can do is just throw files onto
 the FARM willy nilly.
 
+![](/assets/rmd-images/farm-cluster-intro/mkdir_testing.gif)
+
 Another good general practice is to make a `README` file to just give a
 brief explanation of what you’re doing with a given folder. Let’s use
 `cd testing` to move into our testing folder, and then use `nano
 README.md` to create a README file. Once you’re in `nano`, just give a
 brief description of what the `testing` folder is for. Once you’re done,
 use `CTRL-X` to exit.
+
+![](/assets/rmd-images/farm-cluster-intro/nano_readme.gif)
 
 ## `rsync` Basics
 

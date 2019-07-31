@@ -63,6 +63,8 @@ You can check the *manual* page for any function by using the command `man`. For
 
 Another key function we'll use is `cd`, which we use to change the current working directory. For example, if I'm in my Home directory (my username, MJ), which contains a Documents folder, I can use the command `cd Documents/` to change my working directory to `MJ/Documents`. You can type `pwd` to verify where you've moved to, and `ls` to list all the files in your new working directory. To go up one level from your current working directory, like moving from `MJ/Documents` up to `MJ`, you type `cd ..`. `..` just means "up one level".
 
+![](/assets/rmd-images/farm-cluster-intro/cd_1.gif)
+
 We will be using `cd` and `ls` a ton, and we'll introduce other commands as we need them.
 
 ## Showing Hidden Files
@@ -109,6 +111,8 @@ Host farm
    User your-user-name
 ```
 
+![](/assets/rmd-images/farm-cluster-intro/nano_config.gif)
+
 We're telling our `ssh` protocol that there's a host "farm" that you can access with a certain location and username. Now, press `CTRL-X` to exit `nano`. You'll be prompted to write the file before quitting, then asked where to write the file. Press enter to write the file to the name you already gave. You should now be back in your regular Terminal, and if you run `ls`, you'll see there's a new file called "config".
 
 
@@ -118,11 +122,17 @@ Now that we've told our `ssh` protocol that we have a host called "farm", let's 
 
 In your FARM Terminal window, go ahead and run `pwd` to see where you are. This directory should be your username, and we'll refer to this as your FARM home directory. Use `ls` to see what's here.
 
+![](/assets/rmd-images/farm-cluster-intro/log_on.gif)
+
 ## Making Directories and Files
 
 You shouldn't have any folders yet, so let's make a folder called `testing` by using the command `mkdir testing`. We'll be putting all of the files and folders we make for this little tutorial into this folder. This reflects a general principle I will advocate for when working on the FARM: use a consistent and nested directory structure. In other words, put everything into its own folder. For example, I like to have a folder for each project, then folders for data, scripts, and outputs. Each of these contains subfolders as well, and so on. You can definitely overdo it, and it can be annoying to dig 10 levels down to find your files, but I think the worst thing you can do is just throw files onto the FARM willy nilly.
 
+![](/assets/rmd-images/farm-cluster-intro/mkdir_testing.gif)
+
 Another good general practice is to make a `README` file to just give a brief explanation of what you're doing with a given folder. Let's use `cd testing` to move into our testing folder, and then use `nano README.md` to create a README file. Once you're in `nano`, just give a brief description of what the `testing` folder is for. Once you're done, use `CTRL-X` to exit.
+
+![](/assets/rmd-images/farm-cluster-intro/nano_readme.gif)
 
 ## `rsync` Basics
 
