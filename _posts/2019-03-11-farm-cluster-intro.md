@@ -576,7 +576,17 @@ your job happens to be pending for a little bit, you might see it listed
 with PD status, but if it doesn’t have to wait to run, it’ll get done so
 quick that you don’t get to see it with the R status\! You can go ahead
 and check your email to see if you got the start and finish notification
-emails, or you can go ahead to the next section.
+emails, otherwise we’ll check for the standard output and standard error
+files.
+
+### `scancel`
+
+Before I forget, there’s an easy way to cancel a job if you need to.
+Maybe you notice an error in your R script, but you’ve already submitted
+the job. All you’ve gotta do is use the command `scancel`. You can use
+`scancel jobid` to cancel a particular job (remember, you can now use
+`sq` to see all your current jobs), or `scancel -u username` to cancel
+all of your jobs.
 
 ## Checking `stout` and `sterror`
 
@@ -601,6 +611,49 @@ parse out these error files may take some time and plenty of Google, but
 they’re an important part of learning to debug your work.
 
 ## `rsync` Results Back
+
+If you look back at the R script that we ran, you’ll notice that we
+saved a single R object as a `.rds` file. In our case, the object is
+simply the average MPG from the mtcars dataset, but this could also be a
+model object created by R’s `lm` function or something similar. This is
+how I tend to do my work with Bayesian models that take a long time to
+fit- I fit them on the cluster, save the model object as a `.rds` file,
+bring that file back to my personal computer, load it into R, and then I
+can play around with it **exactly** like it was fit on my own computer.
+I’ve found this gives me the best combination of flexibility and
+performance.
+
+You’ll notice a step in there that involves bringing the results file
+from the cluster to your personal computer. It’s time to bring back our
+old friend `rsync`\! Taking a look at our R script, you’ll notice that
+the path for our results is “avg\_mpg\_mtcars.rds”. That will be in
+relation to our job’s **home directory**, which should be set as your
+user directory. That means we’ll find the `.rds` file in the home
+directory. Just for future notice, I would strongly recommend creating a
+`results` or `fit_models` directory under your main project directory,
+so you can keep all your results in one spot.
+
+Remember, you always use `rsync` in a Terminal that’s accessing **your**
+computer, not the cluster. Recall that the syntax puts source first,
+then destination. From **your** computer’s home directory, you can run
+the following: `rsync -avze 'ssh -p 2022'
+farm_username@farm.cse.ucdavis.edu:/home/farm_username/testing/avg_mpg_mtcars.rds
+~/FARM_learning`, which will copy the results file into the
+`FARM_learning` directory on your computer. If you feel like it, you can
+open up an R session on your computer, and use
+`readRDS("FARM_learning/avg_mpg_mtcars.rds")` to load that object into
+R. This object will be just the same as if you ran the script on your
+own computer instead of on the FARM.
+
+# You Did It\! One More Thing Though
+
+At this point, you’ve accomplished the basic goal of this lesson: run an
+R script on the cluster, save your results, and bring them back to your
+computer so you can work with them. However, if you’re running more
+complicated R scripts, it’s almost guaranteed you will need to install
+some packages. Rather than mess with installing packages to the cluster,
+we’re just going to make a folder where we’ll install all our own
+packages so things stay nice and neat.
 
 ## `srun` Interactive R Session
 
