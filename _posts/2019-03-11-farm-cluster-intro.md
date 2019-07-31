@@ -1,4 +1,4 @@
----
+--- 
 toc: true 
 excerpt: "Getting you up and running R on
 the UC Davis FARM computing cluster." 
@@ -395,7 +395,11 @@ some pretty specific instructions. I will by no means exhaustively list
 all the things you can do with a cluster, especially stuff to do with
 parallelization. All our submission script is gonna do is cover the
 basics you’ll need to submit a job. I’ll show you the whole script, and
-then we’ll walk through it line by line.
+then we’ll walk through it line by line. To create this script, make
+sure you’re in the `testing` directory, then use `nano test.sh` to
+create our submission script. I try to make sure my `.R` and `.sh`
+scripts have the same name other than the file extension, so it’s clear
+that they’re a pair.
 
 ``` bash
 #!/bin/bash
@@ -404,13 +408,13 @@ then we’ll walk through it line by line.
 #SBATCH --job-name=testR
 
 # setting home directory
-#SBATCH -D /home/mjculsha/test
+#SBATCH -D /home/mjculsha/testing
 
 # setting standard error output
-#SBATCH -e /home/mjculsha/test/slurm_log/sterror_%j.txt
+#SBATCH -e /home/mjculsha/testing/slurm_log/sterror_%j.txt
 
 # setting standard output
-#SBATCH -o /home/mjculsha/test/slurm_log/stoutput_%j.txt
+#SBATCH -o /home/mjculsha/testing/slurm_log/stoutput_%j.txt
 
 # setting medium priority
 #SBATCH -p med
@@ -425,12 +429,16 @@ then we’ll walk through it line by line.
 # send mail here
 #SBATCH --mail-user=mjculshawmaurer@ucdavis.edu
 
+# now we'll print out the contents of the R script to the standard output file
+cat test.R
+echo "ok now for the actual standard output"
+
 # now running the actual script!
 
 # load R
 module load R
 
-srun Rscript script.R
+srun Rscript test.R
 ```
 
 We’re gonna start from the top here. The **very first line** needs to be
@@ -452,7 +460,7 @@ case is the `test` directory.
 Next up, we’re deciding where to put the output and error logs. These
 files will be simple text files that contain all of the output or error
 messages from your scripts, which will be invaluable when something goes
-wrong. You’ll notice that I created a directory under `test` called
+wrong. You’ll notice that I created a directory under `testing` called
 `slurm_log`, where these will be stored. You can go ahead and create
 this directory using `mkdir`. Another thing to note is that the `%j` in
 each of these text file names will get turned into the unique job ID
@@ -486,6 +494,17 @@ email will get sent whether your job finishes nicely or something goes
 wrong, so it can be useful to see that your job finished in 2 minutes
 when you expected it to take 2 days.
 
+The next line isn’t totally necessary, but I think it can be really
+helpful. We’re using the `cat` command to print out the entire contents
+of our `test.R` script, which will show up in our standard output file.
+This can be handy in matching up the standard output of a particular job
+with the exact R script used to run it. Maybe you submit the same R
+script a couple times, making small changes in between each run. This
+way, when you go look at the standard output file for a particular job,
+you’ll know exactly what R code was used for that job. If something went
+wrong with that job, you’ll have that job’s exact R code to help you
+pinpoint the problem.
+
 Finally, we actually get to run the R script\! First, we load up R so
 the cluster knows we want to use it. Then we use `srun`, which is a
 SLURM command, followed by `Rscript` and the filepath of our script,
@@ -495,13 +514,91 @@ That’s a lot of stuff to submit a job, but the nice thing about this
 script is that you can pretty much copy it for other jobs, with the
 necessary modifications to file paths, run times, etc.
 
-## `sinfo` and `squeue`
+## `squeue`
 
-One last stop before we actually submit our test job\!
+One last stop before we actually submit our test job\! There are a few
+SLURM commands you can use to take a look at information about the
+cluster and jobs running on it. I’m going to introduce you to the most
+useful one, which you’ll use to check on the status of your job. The
+command `squeue` will give a list of all the jobs currently on the
+cluster. You’ll see columns for Job ID, partition (aka priority), name,
+user, ST for status, time (since the job started), nodes, CPU, minimum
+memory, and nodelist. Some of these bits of information are more useful
+than others. The primary things you’ll care about are the job ID, name,
+user, status, and time. Status could use a bit more explanation: the
+three states you’ll most likely encounter are PD for pending, R for
+running, and S for suspended. Pending means the job hasn’t started yet,
+R means it’s currently running, and S means it’s been temporarily
+suspended so a higher priority job can run.
+
+Since running `squeue` alone gives you **all** of the jobs on the
+cluster, which is more information than you’ll often need, you can
+narrow the list down to just your jobs by using `squeue -u
+your_username`. In my case, that would be `squeue -u mjculsha`. I’m not
+sure about you, but that is quite a bit to type every time you want to
+check on your jobs. I’ll show you a little trick that can actually be
+handy in a lot of circumstances. `bash` allows you to create shortcuts
+called “aliases”, which basically just run some code when you type some
+shorter bit of code. We’ll store these aliases in a file called
+`.bash_profile`, which will reside in your home directory, which should
+be your username. Make sure you’re in your home directory, which means
+your prompt looks something like `mjculsha@farm`. Now run `nano
+.bash_profile`, which will open a blank file with that name.
+
+Your `.bash_profile` can be used to set all sorts of things, but we’ll
+stick to aliases for now. The syntax to set an alias looks like this:
+`alias short_thing="much longer thing"`. In this case, let’s type the
+following line into `.bash_profile`: `alias sq="squeue -u username"`,
+but using your username. This will create a shortcut so that any time
+you type `sq` into the Terminal, it will interpret that as `squeue -u
+username`. Since we want to check on our jobs pretty often, this will
+save us a ton of typing\! Press `CTRL-X` to exit `nano` and save the
+file. Now typing `sq` should show you all of **your** jobs\!
 
 ## Submitting Jobs with `sbatch`
 
+Finally, the moment you’ve all been waiting for… it’s time to submit a
+job. First thing to do is navigate to the working directory you set in
+the SLURM submission script. In our case, that’s the `testing`
+directory. Once we’re in here, submitting a job is quite simple.
+Remember that we’ve got a paired set of `test` scripts here, one with a
+`.R` extension and the other with `.sh`. We submit a job using the `.sh`
+script, which then runs the `.R` script. We’ve done a lot of work ahead
+of time, so all we have to do now is run the line `sbatch test.sh`. This
+will submit the `.sh` script to the cluster and our job should start
+soon\!
+
+You can run `sq` to check all the jobs under your username. You may see
+your job with the PD status, but you also might not see any job listed
+at all\! Don’t fret too much- the script we’re running is extremely
+simple, so it will take a really tiny amount of time to actually run. If
+your job happens to be pending for a little bit, you might see it listed
+with PD status, but if it doesn’t have to wait to run, it’ll get done so
+quick that you don’t get to see it with the R status\! You can go ahead
+and check your email to see if you got the start and finish notification
+emails, or you can go ahead to the next section.
+
 ## Checking `stout` and `sterror`
+
+Remember how we created a `slurm_log` directory to store the standard
+output and error files created with each job? Now we’re going to go
+check on those files to see how our job went. From the `testing`
+directory, you can `cd` into the `slurm_log` directory. Now try running
+`ls -lt`, which will list all the files in the directory, sorted by time
+they were last modified. This is nice, because the top files will be the
+ones generated by your most recent job, which is probably the one you’re
+most interested in checking on. Since you’ve only submitted one job so
+far, you should only have one standard output and one standard error
+file. Run `cat filename` to print out the contents of that file so you
+can check them out. For the standard output file, you should see your R
+code followed by the `mtcars` dataframe, and then some other information
+about the job.
+
+Our job should have run without any problems, so there shouldn’t be much
+in the standard error file, but be aware that this is where any errors
+will show up, whether they were generated by R or SLURM. Learning to
+parse out these error files may take some time and plenty of Google, but
+they’re an important part of learning to debug your work.
 
 ## `rsync` Results Back
 
