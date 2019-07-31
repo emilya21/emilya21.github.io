@@ -1,7 +1,8 @@
-
-
-(delete this)`--- toc: true excerpt: "Getting you up and running R on
-the UC Davis FARM computing cluster." ---`(delete this)
+--- 
+toc: true 
+excerpt: "Getting you up and running R on
+the UC Davis FARM computing cluster." 
+---
 
 ## Intro
 
