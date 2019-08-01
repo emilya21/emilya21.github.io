@@ -717,10 +717,12 @@ output for the **R version**, which in my case is 3.6.1 (this may vary
 depending on how far in the future you’re reading this). Remember what
 the version is, it’ll be important in our next step.
 
-![*Quick note*: I used `-p high` to use `high` priority for this run
+![](/assets/rmd-images/farm-cluster-intro/interactive_r.gif)
+
+*Quick note*: I used `-p high` to use `high` priority for this run
 because a few of the `med` priority nodes were down, and the interactive
 sessions will default to `med`
-priority.](/assets/rmd-images/farm-cluster-intro/interactive_r.gif)
+priority.
 
 ## Set Up Directory for R Packages
 

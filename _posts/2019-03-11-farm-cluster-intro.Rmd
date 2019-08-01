@@ -281,8 +281,9 @@ When you log on to the FARM, you can run commands like `ls` and `cd` to look aro
 
 Well, what if we want to do an interactive R session? On our computer, we just ran R from the Terminal, but we don't want to do this on the FARM's head node. Instead, we want to request a computing node to run this interactive session. To do this, we'll run the following line: `srun -t 10 --pty R`. The `srun --pty` part will request an interactive job, the `R` part says we want to use R, and the `-t 10` says we want the job to only run for 10 minutes. If we ask for more time, it will likely take longer for our interactive job to start, but if we don't request enough time, the job might end in the middle of something important, like installing a package. Let's try running an interactive job now, but don't install any packages yet. You can try running some R commands just to see how it works. Let's also run `sessionInfo()`, which will give us some information about our current R session. Check the output for the **R version**, which in my case is 3.6.1 (this may vary depending on how far in the future you're reading this). Remember what the version is, it'll be important in our next step.
 
-![*Quick note*: I used `-p high` to use `high` priority for this run because a few of the `med` priority nodes were down, and the interactive sessions will default to `med` priority.](/assets/rmd-images/farm-cluster-intro/interactive_r.gif)
+![](/assets/rmd-images/farm-cluster-intro/interactive_r.gif)
 
+*Quick note*: I used `-p high` to use `high` priority for this run because a few of the `med` priority nodes were down, and the interactive sessions will default to `med` priority.
 
 ## Set Up Directory for R Packages
 
