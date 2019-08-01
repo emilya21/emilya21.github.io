@@ -1,6 +1,7 @@
 --- 
 toc: true
 toc_sticky: true
+classes: wide
 excerpt: "Getting you up and running R on
 the UC Davis FARM computing cluster." 
 ---
