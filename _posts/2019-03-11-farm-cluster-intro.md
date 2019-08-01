@@ -1,5 +1,6 @@
 --- 
-toc: true 
+toc: true
+toc_sticky: true
 excerpt: "Getting you up and running R on
 the UC Davis FARM computing cluster." 
 ---
@@ -234,8 +235,8 @@ correctly, you should be met with a greeting message telling you that
 you’re on the FARM\!
 
 In your FARM Terminal window, go ahead and run `pwd` to see where you
-are. This directory should be your username, and we’ll refer to this as
-your FARM home directory. Use `ls` to see what’s here.
+are. This directory should be your username, and from now on we’ll refer
+to this as your **FARM home directory**. Use `ls` to see what’s here.
 
 ![](/assets/rmd-images/farm-cluster-intro/log_on.gif)
 
@@ -260,7 +261,9 @@ brief explanation of what you’re doing with a given folder. Let’s use
 `cd testing` to move into our testing folder, and then use `nano
 README.md` to create a README file. Once you’re in `nano`, just give a
 brief description of what the `testing` folder is for. Once you’re done,
-use `CTRL-X` to exit.
+use CTRL-X to exit. You’ll be asked if you want to “save the modified
+buffer”, and you should press Y. Then it will say “file name to write
+to”, and you should hit ENTER.
 
 ![](/assets/rmd-images/farm-cluster-intro/nano_readme.gif)
 
@@ -309,12 +312,14 @@ contents, into the destination folder. This is super useful if you want
 to transfer a whole bunch of files at once, or move one of your nice and
 neat self-contained project folders.
 
+![](/assets/rmd-images/farm-cluster-intro/rsync_intro.gif)
+
 You can also move things from your computer to the FARM, using the same
 `rsync -avze 'ssh -p 2022' source_path destination_path` pattern, and
 you can move whole folders too. Let’s `cd` into our `FARM_learning`
 directory on our own computer, then make a folder called `dummy_files`.
 Now `cd` into this folder. We’re going to make some blank files by using
-the `touch` command, which just creates an empty file with a given name.
+the `touch` command, which will create an empty file with a given name.
 Let’s run `touch dummy1 dummy2 dummy3` to create 3 dummy files. Run `ls`
 to verify that they’re in your folder. Now let’s use `cd ..` to go back
 up to our `FARM_learning` directory. Now we’re going to move the whole
@@ -424,7 +429,7 @@ that they’re a pair.
 #SBATCH -e /home/mjculsha/testing/slurm_log/sterror_%j.txt
 
 # setting standard output
-#SBATCH -o /home/mjculsha/testing/slurm_log/stoutput_%j.txt
+#SBATCH -o /home/mjculsha/testing/slurm_log/stdoutput_%j.txt
 
 # setting medium priority
 #SBATCH -p med
@@ -467,17 +472,18 @@ jobs running at once. The home directory is going to be the directory
 that contains everything needed for this particular script, which in our
 case is the `test` directory.
 
-Next up, we’re deciding where to put the output and error logs. These
-files will be simple text files that contain all of the output or error
-messages from your scripts, which will be invaluable when something goes
-wrong. You’ll notice that I created a directory under `testing` called
-`slurm_log`, where these will be stored. You can go ahead and create
-this directory using `mkdir`. Another thing to note is that the `%j` in
-each of these text file names will get turned into the unique job ID
-number that gets created when you submit a job. What’s nice about this
-is that you can submit the same script multiple times, maybe tweaking it
-between runs, and each run will get a unique pair of output and error
-files. This makes it much easier to fix problems with scripts.
+Next up, we’re deciding where to put the standard output and standard
+error logs. These files will be simple text files that contain all of
+the output or error messages from your scripts, which will be invaluable
+when something goes wrong. You’ll notice that I created a directory
+under `testing` called `slurm_log`, where these will be stored. You can
+go ahead and create this directory using `mkdir`. Another thing to note
+is that the `%j` in each of these text file names will get turned into
+the unique job ID number that gets created when you submit a job. What’s
+nice about this is that you can submit the same script multiple times,
+maybe tweaking it between runs, and each run will get a unique pair of
+output and error files. This makes it much easier to fix problems with
+scripts.
 
 The next two directions are telling SLURM some stuff about how to
 allocate resources for your job. A job’s priority affects how your job
@@ -563,7 +569,9 @@ but using your username. This will create a shortcut so that any time
 you type `sq` into the Terminal, it will interpret that as `squeue -u
 username`. Since we want to check on our jobs pretty often, this will
 save us a ton of typing\! Press `CTRL-X` to exit `nano` and save the
-file. Now typing `sq` should show you all of **your** jobs\!
+file. You might have to close your Terminal window, open a new one, and
+get back onto the FARM in order for the `.bash_profile` to kick in. Now
+typing `sq` should show you all of **your** jobs\!
 
 ## Submitting Jobs with `sbatch`
 
@@ -577,6 +585,8 @@ script, which then runs the `.R` script. We’ve done a lot of work ahead
 of time, so all we have to do now is run the line `sbatch test.sh`. This
 will submit the `.sh` script to the cluster and our job should start
 soon\!
+
+![](/assets/rmd-images/farm-cluster-intro/submit_job.gif)
 
 You can run `sq` to check all the jobs under your username. You may see
 your job with the PD status, but you also might not see any job listed
@@ -598,7 +608,7 @@ the job. All you’ve gotta do is use the command `scancel`. You can use
 `sq` to see all your current jobs), or `scancel -u username` to cancel
 all of your jobs.
 
-## Checking `stout` and `sterror`
+## Checking `stdout` and `sterror`
 
 Remember how we created a `slurm_log` directory to store the standard
 output and error files created with each job? Now we’re going to go
@@ -638,7 +648,7 @@ from the cluster to your personal computer. It’s time to bring back our
 old friend `rsync`\! Taking a look at our R script, you’ll notice that
 the path for our results is “avg\_mpg\_mtcars.rds”. That will be in
 relation to our job’s **home directory**, which should be set as your
-user directory. That means we’ll find the `.rds` file in the home
+FARM home directory. That means we’ll find the `.rds` file in the home
 directory. Just for future notice, I would strongly recommend creating a
 `results` or `fit_models` directory under your main project directory,
 so you can keep all your results in one spot.
@@ -677,8 +687,8 @@ appear. You can run R commands here just like you would in the RStudio
 console. You can do something similar on the cluster.
 
 When you log on to the FARM, you can run commands like `ls` and `cd` to
-look around your user directory, you can create directories and edit
-files, stuff like that. When you’re doing these basic commands upon
+look around your FARM home directory, you can create directories and
+edit files, stuff like that. When you’re doing these basic commands upon
 logging in, you’re actually using one of the cluster’s nodes, called the
 **head node**. The head node is shared by everyone, and it’s crucial
 that everyone is able to use it when they need to. If you were to do
@@ -725,20 +735,20 @@ own folders, but I find it useful.
 
 ## Install R Packages to Directory
 
-Alright, now we’re going to make sure we’re in our user directory and
-then run another interactive R session using `srun -t 15 --pty R`. Once
-your job starts and you see an R prompt `>` appear, go ahead and run the
-code `rownames(installed.packages())`. This will get you a list of all
-the installed packages that R can currently access. These are all of the
-packages installed elsewhere on the cluster, which any user can access.
-One handy trick to see if a package you want is already installed is to
-use the following code: `"package_of_interest" %in%
+Alright, now we’re going to make sure we’re in our FARM home directory
+and then run another interactive R session using `srun -t 15 --pty R`.
+Once your job starts and you see an R prompt `>` appear, go ahead and
+run the code `rownames(installed.packages())`. This will get you a list
+of all the installed packages that R can currently access. These are all
+of the packages installed elsewhere on the cluster, which any user can
+access. One handy trick to see if a package you want is already
+installed is to use the following code: `"package_of_interest" %in%
 rownames(installed.packages())`. If the output is `TRUE`, then it’s
 installed, if `FALSE` then it’s not.
 
 Just as an example, let’s install the `microbenchmark` package to the
 directory we created earlier. First thing, run `getwd()` in your R
-session, just to verify that the working directory is your user
+session, just to verify that the working directory is your FARM home
 directory. Next, let’s run the following line:
 `install.packages("microbenchmark", lib = "R_Packages/R3.6.0")`. This
 will use the familiar `install.packages()` function, but we’ve added an
