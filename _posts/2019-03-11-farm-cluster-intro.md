@@ -713,7 +713,7 @@ important, like installing a package. Let’s try running an interactive
 job now, but don’t install any packages yet. You can try running some R
 commands just to see how it works. Let’s also run `sessionInfo()`, which
 will give us some information about our current R session. Check the
-output for the **R version**, which in my case is 3.6.0 (this may vary
+output for the **R version**, which in my case is 3.6.1 (this may vary
 depending on how far in the future you’re reading this). Remember what
 the version is, it’ll be important in our next step.
 
@@ -734,7 +734,7 @@ sounds interesting to you.
 
 For now, all we’re going to do is make a directory in our home directory
 using `mkdir`, which we’ll call `R_Packages`. `cd` into this directory,
-and then make another one called `R3.6.0` or whatever your R version is.
+and then make another one called `R3.6.1` or whatever your R version is.
 When R packages are installed, they’re built with your specific version
 of R, and if you try to use them when R gets updated, they won’t work
 correctly. It’s just another bit of organization to keep them in their
@@ -753,23 +753,27 @@ installed is to use the following code: `"package_of_interest" %in%
 rownames(installed.packages())`. If the output is `TRUE`, then it’s
 installed, if `FALSE` then it’s not.
 
-Just as an example, let’s install the `microbenchmark` package to the
+Just as an example, let’s install the `wesanderson` package to the
 directory we created earlier. First thing, run `getwd()` in your R
 session, just to verify that the working directory is your FARM home
 directory. Next, let’s run the following line:
-`install.packages("microbenchmark", lib = "R_Packages/R3.6.0")`. This
-will use the familiar `install.packages()` function, but we’ve added an
+`install.packages("wesanderson", lib = "R_Packages/R3.6.0")`. This will
+use the familiar `install.packages()` function, but we’ve added an
 argument for `lib`, which will install the package into the directory we
 made earlier.
+
+![](/assets/rmd-images/farm-cluster-intro/install_package.gif)
 
 ## Load Packages from Here
 
 Now, any time you want to use that package in a script, you can run
-`library("microbenchmark", lib.loc = "R_Packages/R3.6.0")`, which will
-load the package from the specified location. For a little bit more on
-how to manage packages, which may save you some time if you’re going to
-be installing a lot of your own packages, check out [my other blog post
-on this topic](https://mcmaurer.github.io/package-management/).
+`library("wesanderson", lib.loc = "R_Packages/R3.6.0")`, which will load
+the package from the specified location. For a little bit more on how to
+manage packages, which may save you some time if you’re going to be
+installing a lot of your own packages, check out [my other blog post on
+this topic](https://mcmaurer.github.io/package-management/).
+
+![](/assets/rmd-images/farm-cluster-intro/load_package.gif)
 
 # Ok, NOW You Did It\!
 
