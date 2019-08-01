@@ -28,6 +28,7 @@
   }
 
   @include breakpoint($x-large) {
+    float: right; //this is new
     width: calc(100% - #{$right-sidebar-width});
     //padding-right: $right-sidebar-width;
   }
