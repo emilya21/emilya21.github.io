@@ -1,8 +1,7 @@
 ---
 toc: true
-toc_sticky: true
 excerpt: "Getting you up and running R on
-the UC Davis FARM computing cluster." 
+the UC Davis FARM computing cluster."
 ---
 
 ## Intro
@@ -58,11 +57,12 @@ Terminal, command line, and shell, oh my\! I’m going to do a quick
 rundown of these terms, to start. A Terminal is a program that lets you
 type text in, and get text back as a response. The command line is just
 the line where you type in those text commands. Finally, a shell is an
-application that interprets those text commands, it’s almost like a
-translator between you and the computer, taking the text you type and
-translating it for the computer, then translating what the computer
-gives as its response. The default shell for Macs and many Linux
-distributions is `bash`, which we’ll be using today.
+application that interprets those text commands, almost like a
+translator between you and the computer. It takes the text you type and
+translates it for the computer, the computer does something with those
+instructions, and then the shell translates what the computer gives as
+its response. The default shell for Macs and many Linux distributions is
+`bash`, which we’ll be using today.
 
 Go ahead and open up the Terminal application on your computer. You
 should be greeted by some type of **prompt**, which will probably
@@ -88,7 +88,7 @@ can scroll up and down the manual page and press `q` to exit the manual
 page.
 
 Another key function we’ll use is `cd`, which we use to change the
-current working directory. For example, if I’m in my Home directory (my
+current working directory. For example, if I’m in my home directory (my
 username, MJ), which contains a Documents folder, I can use the command
 `cd Documents/` to change my working directory to `MJ/Documents`. You
 can type `pwd` to verify where you’ve moved to, and `ls` to list all the
@@ -220,7 +220,7 @@ access with a certain location and username. Now, press `CTRL-X` to exit
 `nano`. You’ll be prompted to write the file before quitting, then asked
 where to write the file. Press enter to write the file to the name you
 already gave. You should now be back in your regular Terminal, and if
-you run `ls`, you’ll see there’s a new file called “config”.
+you run `ls`, you’ll see there’s a new file called `config`.
 
 ## Logging On and Looking Around
 
@@ -261,9 +261,9 @@ brief explanation of what you’re doing with a given folder. Let’s use
 `cd testing` to move into our testing folder, and then use `nano
 README.md` to create a README file. Once you’re in `nano`, just give a
 brief description of what the `testing` folder is for. Once you’re done,
-use CTRL-X to exit. You’ll be asked if you want to “save the modified
-buffer”, and you should press Y. Then it will say “file name to write
-to”, and you should hit ENTER.
+use `CTRL-X` to exit. You’ll be asked if you want to “save the modified
+buffer”, and you should press `y`. Then it will say “file name to write
+to”, and you should hit `ENTER`.
 
 ![](/assets/rmd-images/farm-cluster-intro/nano_readme.gif)
 
@@ -349,7 +349,7 @@ of some scripts you might actually want to run. Let’s start with the
 you the script including some comments.
 
 In the Terminal window open to the FARM, go into the `testing` directory
-and type `nano test.R` to start editing a new `R` script. Type a script
+and type `nano test.R` to start editing a new R script. Type a script
 that matches the following.
 
 ``` r
@@ -374,8 +374,8 @@ later), and 2) we’ll be saving a `.rds` file, which is what you’ll often
 do when you end up with a model object, like running `model1 <- lm(data,
 y ~ x)`.
 
-This `.R` script should run on your computer just fine, and that makes
-it really convenient to write a big ole script on your computer, test it
+This R script should run on your computer just fine, and that makes it
+really convenient to write a big ole script on your computer, test it
 out a bit, then send it up to the cluster. This will be more typical,
 compared to what we did, which was create a `.R` script directly on the
 cluster. The next script, however, is going to be specific to the
@@ -402,7 +402,7 @@ submission script. This script will be a `.sh` file, which is a `bash`
 script. As you might recall, `bash` is the language you use in the
 Terminal, running commands like `ls` and `cd`. Well, we can write
 scripts that run a bunch of `bash`, just like we can write scripts that
-run a bunch of `R`. Our submission script is essentially a bunch of
+run a bunch of R. Our submission script is essentially a bunch of
 instructions to the cluster on how to run our R script. Because the
 cluster is organized in a more complex way than your computer, and
 because it’s shared by a bunch of other researchers, you’ve gotta give
@@ -682,7 +682,7 @@ script, then submitted it, but we never actually opened R or used an R
 console. On your computer, perhaps you use RStudio to interact with the
 R console and get your work done. Well, we can’t use RStudio on the
 cluster, but we sure can open an R console. On your own computer, if you
-type `R` into the Terminal and hit ENTER, you will see an R console
+type `r` into the Terminal and hit ENTER, you will see an R console
 appear. You can run R commands here just like you would in the RStudio
 console. You can do something similar on the cluster.
 
@@ -699,7 +699,7 @@ which would be a huge bummer. That’s why, up until now, we’ve only
 send them to computing nodes.
 
 Well, what if we want to do an interactive R session? On our computer,
-we just ran `R` from the Terminal, but we don’t want to do this on the
+we just ran R from the Terminal, but we don’t want to do this on the
 FARM’s head node. Instead, we want to request a computing node to run
 this interactive session. To do this, we’ll run the following line:
 `srun -t 10 --pty R`. The `srun --pty` part will request an interactive
