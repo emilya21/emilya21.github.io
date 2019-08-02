@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: splash
 author_profile: false
 header:
   image: /assets/images/Lightroom_JPEG_Exports/website-1080864-2.jpg
