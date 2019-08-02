@@ -428,3 +428,7 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
+.asciinema-player .control-bar {
+  position: static;
+}
