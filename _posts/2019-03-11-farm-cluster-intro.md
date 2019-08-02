@@ -1,5 +1,4 @@
----
-toc: true
+--- toc: true
 excerpt: "Getting you up and running R on
 the UC Davis FARM computing cluster."
 ---
@@ -48,8 +47,7 @@ figured out to get **my** R scripts running on the FARM.
         touching on
   - other clusters
       - I’ve only ever worked on one cluster
-      - while some of this may be generalized to other computing
-        clusters, be careful
+      - most of this basic stuff should carry over to most clusters
 
 ## Unix Shell Basics
 
@@ -68,26 +66,22 @@ Go ahead and open up the Terminal application on your computer. You
 should be greeted by some type of **prompt**, which will probably
 involve something with your username, and it’ll end with the dollar sign
 $. Once you’re here, type `ls` and hit `Enter`. Congratulations, you’ve
-just run your first shell command\! `ls` will list all the files in your
-current directory, which should be your user by default. Now try typing
-`pwd` and hitting enter, which will *print working directory*, or where
-your shell is currently working. On my computer, it is `MJ`, my
-username. You can also use `~` as a shortcut for your Home directory.
+just run your first shell command\! `ls` will list all the files and
+folders in your current directory, which should be your user by default.
+Now try typing `pwd` and hitting enter, which will *print working
+directory*, or where your shell is currently working. On my computer, it
+is `MJ`, my username. You can also use `~` as a shortcut for your Home
+directory.
 
-
-<style type="text/css" rel="stylesheet">
-.asciinema-player .control-bar
-{
-  position: static;
-}
-</style>
-
-<script id="asciicast-EcWwvNZEWykaVQnkBcWlvkJbb" src="https://asciinema.org/a/EcWwvNZEWykaVQnkBcWlvkJbb.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-aRiIkcjPAW49sE0gBtSEURCL1" src="https://asciinema.org/a/aRiIkcjPAW49sE0gBtSEURCL1.js" async data-autoplay="true" data-loop="true"></script>
 
 You can add *options* to a command like `ls`, like `ls -a` to list
-**all** the files in your directory.
+**all** the files in your directory, including *hidden files* (which
+we’ll get to in a minute), `ls -l` to list files in a longer format,
+or `ls -t` to sort by time last modified. Let’s try running `ls -at` to
+sort all your files by the time they were last modified.
 
-![](/assets/rmd-images/farm-cluster-intro/ls_1.gif)
+<script id="asciicast-QAH6GuniCpKCxnGNzcRo9MIoM" src="https://asciinema.org/a/QAH6GuniCpKCxnGNzcRo9MIoM.js" async data-autoplay="true" data-loop="true"></script>
 
 You can check the *manual* page for any function by using the command
 `man`. For example, `man ls` will bring up the manual page for the `ls`
@@ -104,18 +98,18 @@ files in your new working directory. To go up one level from your
 current working directory, like moving from `MJ/Documents` up to `MJ`,
 you type `cd ..`. `..` just means “up one level”.
 
-![](/assets/rmd-images/farm-cluster-intro/cd_1.gif)
+<script id="asciicast-ZBgAUybHJYkbt3N2cXs1UJGCo" src="https://asciinema.org/a/ZBgAUybHJYkbt3N2cXs1UJGCo.js" async data-autoplay="true" data-loop="true"></script>
 
 We will be using `cd` and `ls` a ton, and we’ll introduce other commands
 as we need them.
 
 ## Showing Hidden Files
 
-If you’re very observant, you may have noticed some strange files when I
-ran `ls -a` on my computer, a whole bunch of files that all begin with
-`.`. These are called “hidden files”, and by default, Finder on a Mac
-will not show them. They typically deal with “under the hood” stuff on
-your computer, and we’re about to get a little bit “under the hood”.
+You may have noticed some strange files when I ran `ls -a` on my
+computer, a whole bunch of files that all begin with `.`. These are
+called “hidden files”, and by default, Finder on a Mac will not show
+them. They typically deal with “under the hood” stuff on your computer,
+and we’re about to get a little bit “under the hood”.
 
 If you can see all the hidden files in your Home directory in Finder,
 then you can skip the next section. If you **don’t** see them in Finder,
@@ -158,18 +152,16 @@ computer and **should never ever ever be shared**. I don’t know enough
 to say “well actually it’s ok in this circumstance”, and if you’re
 reading this, neither do you, so just never ever share it, ok?
 
-To generate a key pair, we’ll use the command `ssh-keygen` with some
-options. Type out `ssh-keygen -b 4096 -t rsa` to create the type of key
-recommended by the FARM documentation (I won’t get into too much detail
-here). Hit Enter. You will then be prompted to `Enter file in which to
-save the key (your_home_directory/.ssh/id_rsa):`. **Just hit enter** to
-put the keys in the default location. Next, you’ll be prompted to enter
-a passphrase. Choose a hard password, but remember it. This isn’t Gmail,
-if you forget this password, there’s no way to get it back. **As you
-type, nothing will show up**, and this is ok. Just type out your
-passphrase and hit Enter when you’re done. You’ll have to retype it
-again, and then press Enter again. You should now get a confirmation
-that the key pair was created.
+To generate a key pair, we’ll use the command `ssh-keygen`. Hit Enter.
+You will then be prompted to `Enter file in which to save the key
+(your_home_directory/.ssh/id_rsa):`. **Just hit enter** to put the keys
+in the default location. Next, you’ll be prompted to enter a passphrase.
+Choose a hard password, but remember it. This isn’t Gmail, if you forget
+this password, there’s no way to get it back. **As you type, nothing
+will show up**, and this is ok. Just type out your passphrase and hit
+Enter when you’re done. You’ll have to retype it again, and then press
+Enter again. You should now get a confirmation that the key pair was
+created.
 
 These keys now live in your `.ssh` folder, which resides in your Home
 directory. You should check to make sure you can get to this location in
@@ -217,11 +209,12 @@ Now type out `nano config`. What you see now is the `nano` text editor,
 editing a blank file called `config`. `nano` might look a bit funky, but
 it’s pretty simple. Type out the text below:
 
+    VerifyHostKeyDNS yes
     Host farm
        HostName agri.cse.ucdavis.edu
        User your-user-name
 
-![](/assets/rmd-images/farm-cluster-intro/nano_config.gif)
+<script id="asciicast-kk9nwlj5JRaA1PBHZkygqTlbt" src="https://asciinema.org/a/kk9nwlj5JRaA1PBHZkygqTlbt.js" async data-autoplay="true" data-loop="true"></script>
 
 We’re telling our `ssh` protocol that there’s a host “farm” that you can
 access with a certain location and username. Now, press `CTRL-X` to exit
@@ -240,40 +233,43 @@ FARM and one to access my own computer. In the new Terminal window, type
 as a known host, just go ahead and approve it. You may also be prompted
 to put in your ssh password, go ahead and enter it. If everything goes
 correctly, you should be met with a greeting message telling you that
-you’re on the FARM\!
+you’re on the FARM\! You can type `exit` to log off the FARM and get
+back to your own computer’s command line.
 
 In your FARM Terminal window, go ahead and run `pwd` to see where you
 are. This directory should be your username, and from now on we’ll refer
 to this as your **FARM home directory**. Use `ls` to see what’s here.
 
-![](/assets/rmd-images/farm-cluster-intro/log_on.gif)
+<script id="asciicast-yDlpQexokap99NCGs3uVKzNHT" src="https://asciinema.org/a/yDlpQexokap99NCGs3uVKzNHT.js" async data-autoplay="true" data-loop="true"></script>
 
 ## Making Directories and Files
 
-You shouldn’t have any folders yet, so let’s make a folder called
-`testing` by using the command `mkdir testing`. We’ll be putting all of
-the files and folders we make for this little tutorial into this folder.
-This reflects a general principle I will advocate for when working on
-the FARM: use a consistent and nested directory structure. In other
-words, put everything into its own folder. For example, I like to have a
-folder for each project, then folders for data, scripts, and outputs.
-Each of these contains subfolders as well, and so on. You can definitely
-overdo it, and it can be annoying to dig 10 levels down to find your
-files, but I think the worst thing you can do is just throw files onto
-the FARM willy nilly.
+You shouldn’t have any folders yet, so let’s make a folder in you FARM
+home directory called `testing` by using the command `mkdir testing`.
+We’ll be putting all of the files and folders we make for this little
+tutorial into this folder. This reflects a general principle I will
+advocate for when working on the FARM: use a consistent and nested
+directory structure. In other words, put everything into its own folder.
+For example, I like to have a folder for each project, then folders for
+data, scripts, and outputs. Each of these contains subfolders as well,
+and so on. You can definitely overdo it, and it can be annoying to dig
+10 levels down to find your files, but I think the worst thing you can
+do is just throw files onto the FARM willy nilly.
 
-![](/assets/rmd-images/farm-cluster-intro/mkdir_testing.gif)
+<script id="asciicast-blIbjGZF95PonDwPafOJiRYbG" src="https://asciinema.org/a/blIbjGZF95PonDwPafOJiRYbG.js" async  data-autoplay="true" data-loop="true"></script>
 
 Another good general practice is to make a `README` file to just give a
 brief explanation of what you’re doing with a given folder. Let’s use
 `cd testing` to move into our testing folder, and then use `nano
-README.md` to create a README file. Once you’re in `nano`, just give a
-brief description of what the `testing` folder is for. Once you’re done,
-use `CTRL-X` to exit. You’ll be asked if you want to “save the modified
-buffer”, and you should press `y`. Then it will say “file name to write
-to”, and you should hit `ENTER`.
+README.md` to create a README Markdown file. Markdown is a simple plain
+text file format that’s useful for taking notes and stuff. Once you’re
+in `nano`, just give a brief description of what the `testing` folder is
+for. Once you’re done, use `CTRL-X` to exit. You’ll be asked if you want
+to “save the modified buffer”, and you should press `y`. Then it will
+say “file name to write to”, and you should hit `ENTER`, since we want
+to accept the file name `README.md`.
 
-![](/assets/rmd-images/farm-cluster-intro/nano_readme.gif)
+<script id="asciicast-syBGh9ZEC5kizenN22YYkkefB" src="https://asciinema.org/a/syBGh9ZEC5kizenN22YYkkefB.js" async data-autoplay="true" data-loop="true"></script>
 
 ## `rsync` Basics
 
@@ -308,10 +304,10 @@ though), it just won’t work. This establishes another part of your
 workflow: you’ll almost always have 2 Terminal windows open, one
 accessing the FARM and one on your own computer. Make sure you’ve got
 that setup going on your computer now. On your own computer’s Terminal
-window, create a folder in your home directory called `FARM_learning`.
-We’re going to copy our `README` file over to this folder using `rsync`.
-To do this, we’ll start in our home directory on our computer. Now
-you’ll run `rsync -avze 'ssh -p 2022'
+window, use `mkdir` to create a folder in your home directory called
+`FARM_learning`. We’re going to copy our `README` file over to this
+folder using `rsync`. To do this, we’ll start in our home directory on
+our computer. Now you’ll run `rsync -avze 'ssh -p 2022'
 farm_username@farm.cse.ucdavis.edu:/home/farm_username/testing/README.md
 ~/FARM_learning`. This will copy the file from the listed destination to
 the new location. If you were to leave the `README.md` portion off of
@@ -320,7 +316,7 @@ contents, into the destination folder. This is super useful if you want
 to transfer a whole bunch of files at once, or move one of your nice and
 neat self-contained project folders.
 
-![](/assets/rmd-images/farm-cluster-intro/rsync_intro.gif)
+<script id="asciicast-T0VbuxhVqIgHZ5GB3Ht5mZJo6" src="https://asciinema.org/a/T0VbuxhVqIgHZ5GB3Ht5mZJo6.js" async data-autoplay="true" data-loop="true"></script>
 
 You can also move things from your computer to the FARM, using the same
 `rsync -avze 'ssh -p 2022' source_path destination_path` pattern, and
@@ -425,7 +421,7 @@ scripts have the same name other than the file extension, so it’s clear
 that they’re a pair.
 
 ``` bash
-#!/bin/bash
+#!/bin/bash -l
 
 # setting name of job
 #SBATCH --job-name=testR
@@ -594,7 +590,7 @@ of time, so all we have to do now is run the line `sbatch test.sh`. This
 will submit the `.sh` script to the cluster and our job should start
 soon\!
 
-![](/assets/rmd-images/farm-cluster-intro/submit_job.gif)
+<script id="asciicast-9vVoWipwLl5PxxqVk64LjjHTk" src="https://asciinema.org/a/9vVoWipwLl5PxxqVk64LjjHTk.js" async data-autoplay="true" data-loop="true"></script>
 
 You can run `sq` to check all the jobs under your username. You may see
 your job with the PD status, but you also might not see any job listed
@@ -630,9 +626,11 @@ far, you should only have one standard output and one standard error
 file. Run `cat filename` to print out the contents of that file so you
 can check them out. For the standard output file, you should see your R
 code followed by the `mtcars` dataframe, and then some other information
-about the job.
+about the job. You can also run `cat filename | less`, which will pipe
+the output of `cat filename` to `less`, which displays long files in a
+format similar to `man`, where you can scroll easily.
 
-![](/assets/rmd-images/farm-cluster-intro/check_logs.gif)
+<script id="asciicast-erRUTXsgYOPmuXNCY5an5fhVi" src="https://asciinema.org/a/erRUTXsgYOPmuXNCY5an5fhVi.js" async data-autoplay="true" data-loop="true"></script>
 
 Our job should have run without any problems, so there shouldn’t be much
 in the standard error file, but be aware that this is where any errors
@@ -683,7 +681,9 @@ computer so you can work with them. However, if you’re running more
 complicated R scripts, it’s almost guaranteed you will need to install
 some packages. Rather than mess with installing packages to the cluster,
 we’re just going to make a folder where we’ll install all our own
-packages so things stay nice and neat.
+packages so things stay nice and neat. I will note that iff you do want
+an R package installed globally just email a request for it to
+[help@cse.ucdavis.edu](help@cse.ucdavis.edu).
 
 ## `srun` Interactive R Session
 
@@ -725,7 +725,7 @@ output for the **R version**, which in my case is 3.6.1 (this may vary
 depending on how far in the future you’re reading this). Remember what
 the version is, it’ll be important in our next step.
 
-![](/assets/rmd-images/farm-cluster-intro/interactive_r.gif)
+<script id="asciicast-7jFHcRDOnBOLW7PhyfC1ATJ5V" src="https://asciinema.org/a/7jFHcRDOnBOLW7PhyfC1ATJ5V.js" async data-autoplay="true" data-loop="true"></script>
 
 *Quick note*: I used `-p high` to use `high` priority for this run
 because a few of the `med` priority nodes were down, and the interactive
@@ -766,23 +766,23 @@ Just as an example, let’s install the `wesanderson` package to the
 directory we created earlier. First thing, run `getwd()` in your R
 session, just to verify that the working directory is your FARM home
 directory. Next, let’s run the following line:
-`install.packages("wesanderson", lib = "R_Packages/R3.6.0")`. This will
+`install.packages("wesanderson", lib = "R_Packages/R3.6.1")`. This will
 use the familiar `install.packages()` function, but we’ve added an
 argument for `lib`, which will install the package into the directory we
 made earlier.
 
-![](/assets/rmd-images/farm-cluster-intro/install_package.gif)
+<script id="asciicast-m6seqJZGOpLh2dqNH7lzaVY5E" src="https://asciinema.org/a/m6seqJZGOpLh2dqNH7lzaVY5E.js" async data-autoplay="true" data-loop="true"></script>
 
 ## Load Packages from Here
 
 Now, any time you want to use that package in a script, you can run
-`library("wesanderson", lib.loc = "R_Packages/R3.6.0")`, which will load
+`library("wesanderson", lib.loc = "R_Packages/R3.6.1")`, which will load
 the package from the specified location. For a little bit more on how to
 manage packages, which may save you some time if you’re going to be
 installing a lot of your own packages, check out [my other blog post on
 this topic](https://mcmaurer.github.io/package-management/).
 
-![](/assets/rmd-images/farm-cluster-intro/load_package.gif)
+<script id="asciicast-HnM15xUbTscDxGyRoAiyhJ275" src="https://asciinema.org/a/HnM15xUbTscDxGyRoAiyhJ275.js" async data-autoplay="true" data-loop="true"></script>
 
 # Ok, NOW You Did It\!
 
@@ -800,10 +800,13 @@ initial process a little less daunting, and at least gave you an idea of
 how to proceed.
 
 There are lots of great resources that helped me figure this stuff out,
-and will hopefully help you too. The FARM itself has [a home
-page](https://wiki.cse.ucdavis.edu/support/systems/farm) and a [Getting
+and will hopefully help you too. The FARM itself has [a Home
+Page](https://wiki.cse.ucdavis.edu/support/systems/farm), a [Getting
 Started](https://wiki.cse.ucdavis.edu/support/faq/getting_started)
-section that can be quite useful, and the [Ross-Ibarra
+section, and [a Farm Guide](https://wiki.cse.ucdavis.edu/farm_guide)
+that can be super useful. The [High Performance Computing
+website](https://www.hpc.ucdavis.edu/) has broader information about
+UCD’s resources, including the FARM. Finally, the [Ross-Ibarra
 Lab](http://www.rilab.org/) at UCD has a [really great bit of FARM
 documentation](https://github.com/RILAB/lab-docs/wiki/Using-Farm) as
 well. You should also feel free to contact me using [any method at the
