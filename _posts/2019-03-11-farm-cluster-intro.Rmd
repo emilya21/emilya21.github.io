@@ -53,9 +53,7 @@ Terminal, command line, and shell, oh my! I'm going to do a quick rundown of the
 
 Go ahead and open up the Terminal application on your computer. You should be greeted by some type of **prompt**, which will probably involve something with your username, and it'll end with the dollar sign \$. Once you're here, type `ls` and hit `Enter`. Congratulations, you've just run your first shell command! `ls` will list all the files in your current directory, which should be your user by default. Now try typing `pwd` and hitting enter, which will *print working directory*, or where your shell is currently working. On my computer, it is `MJ`, my username. You can also use `~` as a shortcut for your Home directory.
 
-![](/assets/rmd-images/farm-cluster-intro/ls_pwd.gif)
-
-<script id="asciicast-0yoLzwvu0TjDl7o9FrEpUjWMv" src="https://asciinema.org/a/0yoLzwvu0TjDl7o9FrEpUjWMv.js" async></script>
+<script id="asciicast-0yoLzwvu0TjDl7o9FrEpUjWMv" src="https://asciinema.org/a/0yoLzwvu0TjDl7o9FrEpUjWMv.js" async data-autoplay="true" data-loop="true"></script>
 
 You can add *options* to a command like `ls`, like `ls -a` to list **all** the files in your directory.
 
