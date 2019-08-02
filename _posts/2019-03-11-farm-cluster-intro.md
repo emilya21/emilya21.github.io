@@ -76,7 +76,7 @@ username. You can also use `~` as a shortcut for your Home directory.
 
 ![](/assets/rmd-images/farm-cluster-intro/ls_pwd.gif)
 
-![](https://asciinema.org/a/V6lT7pLlYV1AoJBee1N1JaQMY)
+[![](https://asciinema.org/a/V6lT7pLlYV1AoJBee1N1JaQMY.svg)](https://asciinema.org/a/V6lT7pLlYV1AoJBee1N1JaQMY)
 
 You can add *options* to a command like `ls`, like `ls -a` to list
 **all** the files in your directory.
