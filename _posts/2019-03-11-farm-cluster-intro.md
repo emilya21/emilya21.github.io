@@ -76,6 +76,8 @@ directory.
 
 <script id="asciicast-aRiIkcjPAW49sE0gBtSEURCL1" src="https://asciinema.org/a/aRiIkcjPAW49sE0gBtSEURCL1.js" async data-autoplay="true" data-loop="true"></script>
 
+*Quick note*: this recording was made with [asciinema](https://asciinema.org/), and you can actually pause it, rewind it, and even **copy the text** from it!
+
 You can add *options* to a command like `ls`, like `ls -a` to list
 **all** the files in your directory, including *hidden files* (which
 we’ll get to in a minute), `ls -l` to list files in a longer format,
