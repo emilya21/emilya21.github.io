@@ -74,15 +74,7 @@ current directory, which should be your user by default. Now try typing
 your shell is currently working. On my computer, it is `MJ`, my
 username. You can also use `~` as a shortcut for your Home directory.
 
-
-
-<script id="asciicast-i9TaAeuZi4RuF60HFRTalTjii"
-src="https://asciinema.org/a/i9TaAeuZi4RuF60HFRTalTjii.js" async data-autoplay="true" data-loop="true">
-.asciinema-player .control-bar
-{
-  position: static;
-}
-</script>
+<script id="asciicast-EcWwvNZEWykaVQnkBcWlvkJbb" src="https://asciinema.org/a/EcWwvNZEWykaVQnkBcWlvkJbb.js" async data-autoplay="true" data-loop="true"></script>
 
 You can add *options* to a command like `ls`, like `ls -a` to list
 **all** the files in your directory.
