@@ -1,4 +1,5 @@
---- toc: true
+--- 
+toc: true
 excerpt: "Getting you up and running R on
 the UC Davis FARM computing cluster."
 ---
