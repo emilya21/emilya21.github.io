@@ -74,7 +74,7 @@ directory*, or where your shell is currently working. On my computer, it
 is `MJ`, my username. You can also use `~` as a shortcut for your Home
 directory.
 
-<script id="asciicast-aRiIkcjPAW49sE0gBtSEURCL1" src="https://asciinema.org/a/aRiIkcjPAW49sE0gBtSEURCL1.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-aRiIkcjPAW49sE0gBtSEURCL1" src="https://asciinema.org/a/aRiIkcjPAW49sE0gBtSEURCL1.js" async data-autoplay="true"></script>
 
 *Quick note*: this recording was made with [asciinema](https://asciinema.org/), and you can actually pause it, rewind it, and even **copy the text** from it!
 
@@ -84,7 +84,7 @@ we’ll get to in a minute), `ls -l` to list files in a longer format,
 or `ls -t` to sort by time last modified. Let’s try running `ls -at` to
 sort all your files by the time they were last modified.
 
-<script id="asciicast-QAH6GuniCpKCxnGNzcRo9MIoM" src="https://asciinema.org/a/QAH6GuniCpKCxnGNzcRo9MIoM.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-QAH6GuniCpKCxnGNzcRo9MIoM" src="https://asciinema.org/a/QAH6GuniCpKCxnGNzcRo9MIoM.js" async data-autoplay="true"></script>
 
 You can check the *manual* page for any function by using the command
 `man`. For example, `man ls` will bring up the manual page for the `ls`
@@ -101,7 +101,7 @@ files in your new working directory. To go up one level from your
 current working directory, like moving from `MJ/Documents` up to `MJ`,
 you type `cd ..`. `..` just means “up one level”.
 
-<script id="asciicast-ZBgAUybHJYkbt3N2cXs1UJGCo" src="https://asciinema.org/a/ZBgAUybHJYkbt3N2cXs1UJGCo.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-ZBgAUybHJYkbt3N2cXs1UJGCo" src="https://asciinema.org/a/ZBgAUybHJYkbt3N2cXs1UJGCo.js" async data-autoplay="true"></script>
 
 We will be using `cd` and `ls` a ton, and we’ll introduce other commands
 as we need them.
@@ -217,7 +217,7 @@ it’s pretty simple. Type out the text below:
        HostName agri.cse.ucdavis.edu
        User your-user-name
 
-<script id="asciicast-kk9nwlj5JRaA1PBHZkygqTlbt" src="https://asciinema.org/a/kk9nwlj5JRaA1PBHZkygqTlbt.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-kk9nwlj5JRaA1PBHZkygqTlbt" src="https://asciinema.org/a/kk9nwlj5JRaA1PBHZkygqTlbt.js" async data-autoplay="true"></script>
 
 We’re telling our `ssh` protocol that there’s a host “farm” that you can
 access with a certain location and username. Now, press `CTRL-X` to exit
@@ -243,7 +243,7 @@ In your FARM Terminal window, go ahead and run `pwd` to see where you
 are. This directory should be your username, and from now on we’ll refer
 to this as your **FARM home directory**. Use `ls` to see what’s here.
 
-<script id="asciicast-yDlpQexokap99NCGs3uVKzNHT" src="https://asciinema.org/a/yDlpQexokap99NCGs3uVKzNHT.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-yDlpQexokap99NCGs3uVKzNHT" src="https://asciinema.org/a/yDlpQexokap99NCGs3uVKzNHT.js" async data-autoplay="true"></script>
 
 ## Making Directories and Files
 
@@ -259,7 +259,7 @@ and so on. You can definitely overdo it, and it can be annoying to dig
 10 levels down to find your files, but I think the worst thing you can
 do is just throw files onto the FARM willy nilly.
 
-<script id="asciicast-blIbjGZF95PonDwPafOJiRYbG" src="https://asciinema.org/a/blIbjGZF95PonDwPafOJiRYbG.js" async  data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-blIbjGZF95PonDwPafOJiRYbG" src="https://asciinema.org/a/blIbjGZF95PonDwPafOJiRYbG.js" async  data-autoplay="true"></script>
 
 Another good general practice is to make a `README` file to just give a
 brief explanation of what you’re doing with a given folder. Let’s use
@@ -272,7 +272,7 @@ to “save the modified buffer”, and you should press `y`. Then it will
 say “file name to write to”, and you should hit `ENTER`, since we want
 to accept the file name `README.md`.
 
-<script id="asciicast-syBGh9ZEC5kizenN22YYkkefB" src="https://asciinema.org/a/syBGh9ZEC5kizenN22YYkkefB.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-syBGh9ZEC5kizenN22YYkkefB" src="https://asciinema.org/a/syBGh9ZEC5kizenN22YYkkefB.js" async data-autoplay="true"></script>
 
 ## `rsync` Basics
 
@@ -319,7 +319,7 @@ contents, into the destination folder. This is super useful if you want
 to transfer a whole bunch of files at once, or move one of your nice and
 neat self-contained project folders.
 
-<script id="asciicast-T0VbuxhVqIgHZ5GB3Ht5mZJo6" src="https://asciinema.org/a/T0VbuxhVqIgHZ5GB3Ht5mZJo6.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-T0VbuxhVqIgHZ5GB3Ht5mZJo6" src="https://asciinema.org/a/T0VbuxhVqIgHZ5GB3Ht5mZJo6.js" async data-autoplay="true"></script>
 
 You can also move things from your computer to the FARM, using the same
 `rsync -avze 'ssh -p 2022' source_path destination_path` pattern, and
@@ -593,7 +593,7 @@ of time, so all we have to do now is run the line `sbatch test.sh`. This
 will submit the `.sh` script to the cluster and our job should start
 soon\!
 
-<script id="asciicast-9vVoWipwLl5PxxqVk64LjjHTk" src="https://asciinema.org/a/9vVoWipwLl5PxxqVk64LjjHTk.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-9vVoWipwLl5PxxqVk64LjjHTk" src="https://asciinema.org/a/9vVoWipwLl5PxxqVk64LjjHTk.js" async data-autoplay="true"></script>
 
 You can run `sq` to check all the jobs under your username. You may see
 your job with the PD status, but you also might not see any job listed
@@ -633,7 +633,7 @@ about the job. You can also run `cat filename | less`, which will pipe
 the output of `cat filename` to `less`, which displays long files in a
 format similar to `man`, where you can scroll easily.
 
-<script id="asciicast-erRUTXsgYOPmuXNCY5an5fhVi" src="https://asciinema.org/a/erRUTXsgYOPmuXNCY5an5fhVi.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-erRUTXsgYOPmuXNCY5an5fhVi" src="https://asciinema.org/a/erRUTXsgYOPmuXNCY5an5fhVi.js" async data-autoplay="true"></script>
 
 Our job should have run without any problems, so there shouldn’t be much
 in the standard error file, but be aware that this is where any errors
@@ -728,7 +728,7 @@ output for the **R version**, which in my case is 3.6.1 (this may vary
 depending on how far in the future you’re reading this). Remember what
 the version is, it’ll be important in our next step.
 
-<script id="asciicast-7jFHcRDOnBOLW7PhyfC1ATJ5V" src="https://asciinema.org/a/7jFHcRDOnBOLW7PhyfC1ATJ5V.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-7jFHcRDOnBOLW7PhyfC1ATJ5V" src="https://asciinema.org/a/7jFHcRDOnBOLW7PhyfC1ATJ5V.js" async data-autoplay="true"></script>
 
 *Quick note*: I used `-p high` to use `high` priority for this run
 because a few of the `med` priority nodes were down, and the interactive
@@ -774,7 +774,7 @@ use the familiar `install.packages()` function, but we’ve added an
 argument for `lib`, which will install the package into the directory we
 made earlier.
 
-<script id="asciicast-m6seqJZGOpLh2dqNH7lzaVY5E" src="https://asciinema.org/a/m6seqJZGOpLh2dqNH7lzaVY5E.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-m6seqJZGOpLh2dqNH7lzaVY5E" src="https://asciinema.org/a/m6seqJZGOpLh2dqNH7lzaVY5E.js" async data-autoplay="true"></script>
 
 ## Load Packages from Here
 
@@ -785,7 +785,7 @@ manage packages, which may save you some time if you’re going to be
 installing a lot of your own packages, check out [my other blog post on
 this topic](https://mcmaurer.github.io/package-management/).
 
-<script id="asciicast-HnM15xUbTscDxGyRoAiyhJ275" src="https://asciinema.org/a/HnM15xUbTscDxGyRoAiyhJ275.js" async data-autoplay="true" data-loop="true"></script>
+<script id="asciicast-HnM15xUbTscDxGyRoAiyhJ275" src="https://asciinema.org/a/HnM15xUbTscDxGyRoAiyhJ275.js" async data-autoplay="true"></script>
 
 # Ok, NOW You Did It\!
 
