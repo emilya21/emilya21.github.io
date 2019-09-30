@@ -684,7 +684,7 @@ computer so you can work with them. However, if you’re running more
 complicated R scripts, it’s almost guaranteed you will need to install
 some packages. Rather than mess with installing packages to the cluster,
 we’re just going to make a folder where we’ll install all our own
-packages so things stay nice and neat. I will note that iff you do want
+packages so things stay nice and neat. I will note that if you do want
 an R package installed globally just email a request for it to
 [help@cse.ucdavis.edu](help@cse.ucdavis.edu).
 
