@@ -5,15 +5,15 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Michael Culshaw-Maurer"
+title                    : "Emily Abernathy"
 title_separator          : "|"
-name                     : "Michael Culshaw-Maurer"
-description              : "Zombie bugs, NBA geekiness, photography."
-url                      : "https://mcmaurer.github.io"
+name                     : "Emily Abernathy"
+description              : "change this soon"
+url                      : "https://emilya21.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -62,7 +62,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : "MCulshawMaurer"
+  username               : "EmilyVAbernathy"
 facebook:
   username               :
   app_id                 :
@@ -84,7 +84,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Michael Culshaw-Maurer"
+  name             : "Emily Aberanthy"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I'm a PhD candidate in ecology and I like to pet dogs."
   location         : "Somewhere"
@@ -97,12 +97,12 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "MCMaurer"
+  github           : "emilya21"
   gitlab           :
   google_plus      :
   keybase          :
   instagram        : 
-    username: "mc_maurer"
+    username:
   lastfm           :
   linkedin         : # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
@@ -111,7 +111,7 @@ author:
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
   twitter:
-    username: "MCulshawMaurer"
+    username: "EmilyVAbernathy"
   vine             :
   weibo            :
   xing             :
