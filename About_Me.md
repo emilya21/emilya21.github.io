@@ -2,7 +2,7 @@
 layout: splash
 author_profile: false
 header:
-  image: /assets/images/SWHA_image.jpg
+  image: /assets/images/SWHA_image.JPG
 ---
 
 My name is Emily Abernathy.I am a 5th-year PhD candidate in the Graduate Group of Ecology at UC Davis where I am advised by [Dr. Josh Hull](https://animalscience.ucdavis.edu/people/faculty/joshua-hull). I am broadly interested in conservation genetics and genomics and how we can study adaptation and speciation in order to inform conservation decisions.
