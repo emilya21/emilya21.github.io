@@ -4,10 +4,11 @@ main:
     url: /About_Me
   - title: "Research"
     url: /Research
-  - title: "Photography"
-    url: /Photography
+  #- title: "Photography"
+  #  url: /Photography
   - title: "Blog"
     url: /Blog
   - title: "CV"
     url: /CV.pdf
 
+#can just change these to what I want in my top navigation bar, and changing the order here will change how they appear on the website
