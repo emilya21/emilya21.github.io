@@ -2,11 +2,13 @@
 layout: splash
 author_profile: false
 header:
-  image: /assets/images/Lightroom_JPEG_Exports/website-1080864-2.jpg
+  image: /assets/images/SWHA_image.jpg
 ---
 
-My name is Michael Culshaw-Maurer. I'm a 5th-year PhD candidate and [USDA NIFA Predoctoral Fellow](https://nifa.usda.gov/funding-opportunity/agriculture-and-food-research-initiative-education-workforce-development) in the Graduate Group in Ecology at UC Davis, where I'm co-advised by [Jay Rosenheim](https://rosenheim.faculty.ucdavis.edu/) and [Sebastian Schreiber](http://www.eve.ucdavis.edu/sschreiber/). I am broadly interested in trait-mediated effects in biological control systems, but you can read more about that on my [research page](https://mcmaurer.github.io/Research/). I am an Affiliate of the UC Davis [Data Science Initiative](http://datascience.ucdavis.edu/), co-coordinator of the [Davis R Users Group](https://d-rug.github.io/), co-founder of the UC Davis Nuanced Understanding of Ecological Modeling group, and I teach the graduate level [R for Data Analysis and Visualization in Science](https://gge-ucd.github.io/R-DAVIS/index.html) course. I have also served as a Head Steward for the [UC Student Workers Union](http://www.uaw2865.org/) and helped run beer tastings with the UCD Food Science Brewing Club.
+My name is Emily Abernathy.I am a 5th-year PhD candidate in the Graduate Group of Ecology at UC Davis where I am advised by [Dr. Josh Hull](https://animalscience.ucdavis.edu/people/faculty/joshua-hull). I am broadly interested in conservation genetics and genomics and how we can study adaptation and speciation in order to inform conservation decisions.
 
-I'm a hobbyist photographer, which serves as a nice creative outlet after a long day in the lab or office. You can check out some of my galleries on my [photography page](https://mcmaurer.github.io/Photography/). I also enjoy playing racquetball and lacrosse, camping, canoeing, hiking, and thrift shopping.
+Before coming to UC Davis I got my bachelor's degree in Wildlife Biology at the University Of Vermont (Go Catamounts!). I have also previously worked for the Golden Gate Raptor Observatory, Point Blue Conservation Science, and Hawkwatch International. 
 
-If you're on the UCD campus, you can find me in Briggs 320 (Rosenheim Lab) or Storer 5350 (Schreiber Lab). You can also email me at mjculshawmaurer [at] ucdavis [dot] edu. You can follow me on Twitter or Github by following the links at the bottom of this page. You can also try carrier pigeon, message in a bottle, or yelling really loud, but these have proven less successful.
+In my spare time you can find me playing ultimate frisbee, volunteer raptor banding for the Golden Gate Raptor Observatory, and hanging out with my Australian Shepherd Lupine. 
+
+Please feel free to send me an e-mail at eabernathy@ucdavis.edu or follow me on Twitter and Github using the links at the bottom of the page!
