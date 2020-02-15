@@ -6,7 +6,7 @@ author_profile: true
 header:
   overlay_color: "#000"
   overlay_filter: "0.05"
-  overlay_image: /assets/images/Lightroom_JPEG_Exports/website-1070106.jpg
+  overlay_image: /assets/images/rtha_dm.jpg
 feature_row:
   - image_path: mcmaurer.github.io/assets/images/Lightroom_JPEG_Exports/website-1060632.jpg
     url: /Photography/SJU_Photos
