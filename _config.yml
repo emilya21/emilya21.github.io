@@ -117,6 +117,8 @@ author:
   xing             :
   youtube          : # "https://youtube.com/c/MichaelRoseDesign"
 
+# Google Analytics
+google_analytics: UA-159179263-1
 
 # Reading Files
 include:
